@@ -1,0 +1,1009 @@
+{
+  "metadata": {
+    "title": "SAYVA",
+    "description": "English learning with a clear path, purposeful practice, and a human pace.",
+    "siteName": "SAYVA"
+  },
+  "nav": {
+    "features": "Features",
+    "experience": "Learning experience",
+    "about": "About SAYVA",
+    "faq": "FAQ",
+    "primaryCta": "Explore SAYVA",
+    "menu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "فارسی",
+    "languageLabel": "Change language",
+    "primaryNavigation": "Primary navigation",
+    "mobileNavigation": "Mobile navigation",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "workspace": "SAYVA space",
+    "signOut": "Sign out",
+    "signingOut": "Signing out…",
+    "signOutError": "Sign out failed. Please try again.",
+    "learn": "Learn",
+    "practice": "Practice",
+    "speaking": "AI Speaking",
+    "progress": "Progress",
+    "admin": "Admin"
+  },
+  "home": {
+    "eyebrow": "English learning, at a pace that lasts",
+    "title": "Don’t just study English. Bring it into your life.",
+    "description": "SAYVA is an English-learning space for building a habit, practicing with purpose, and finding your own path—calmly, clearly, consistently.",
+    "primaryCta": "See the SAYVA experience",
+    "secondaryCta": "How it works",
+    "heroAlt": "A quiet study desk with a notebook, navy book, and brass pen",
+    "heroLabel": "Your learning space",
+    "heroCaption": "Less scattered. More in the flow.",
+    "signalEyebrow": "For making progress, not just starting",
+    "signalTitle": "A clearer step, every day",
+    "signalDescription": "Language learning lasts when you know why you are practicing, what to focus on, and what comes next.",
+    "signals": {
+      "clarity": {
+        "title": "A clear path",
+        "body": "Start from where you are and follow a learning path that makes the next step easy to see."
+      },
+      "practice": {
+        "title": "Purposeful practice",
+        "body": "Practice is not filler. Every exercise has a meaningful place in the path."
+      },
+      "context": {
+        "title": "Language in context",
+        "body": "See words and sentences in situations that feel closer to real life."
+      }
+    },
+    "methodEyebrow": "The SAYVA method",
+    "methodTitle": "Good learning happens in the right order.",
+    "methodDescription": "SAYVA shapes an experience that starts with noticing, grows through practice, and arrives at use.",
+    "steps": {
+      "start": {
+        "number": "01",
+        "title": "Start from you",
+        "body": "Begin with what you know and what you want to be able to do."
+      },
+      "build": {
+        "number": "02",
+        "title": "Build through practice",
+        "body": "Use short, meaningful repetitions to move from knowing toward doing."
+      },
+      "use": {
+        "number": "03",
+        "title": "Make it yours",
+        "body": "Take English off the page and use it in thought, work, and conversation."
+      }
+    },
+    "focusEyebrow": "An experience that respects your attention",
+    "focusTitle": "Less noise. More learning.",
+    "focusBody": "You should not be thrown from one screen to the next. Each part is designed to make your place, purpose, and next move clear.",
+    "focusPoints": [
+      "A simple structure for fewer decisions",
+      "Short practice for real days",
+      "Feedback that makes the next step visible"
+    ],
+    "focusCardLabel": "Focused learning",
+    "focusCardTitle": "One idea, one moment to understand",
+    "focusCardBody": "A calm space to notice, think, and continue.",
+    "aiEyebrow": "AI, in the right place",
+    "aiTitle": "When you’re ready, the conversation begins.",
+    "aiBody": "SAYVA’s intelligent capabilities are designed for practice and speaking—not to replace the learning path, but to bring it closer to your life.",
+    "aiCta": "Explore the capabilities",
+    "closingEyebrow": "The next step can be simple",
+    "closingTitle": "Make your English path clearer.",
+    "closingBody": "With SAYVA, learning becomes less like one big decision and more like a series of steps you can take.",
+    "closingCta": "See the learning experience"
+  },
+  "features": {
+    "metadataTitle": "Features",
+    "metadataDescription": "The SAYVA capabilities for clear, purposeful, human English learning.",
+    "eyebrow": "Built for real learning",
+    "title": "Everything to learn better, not just see more.",
+    "description": "SAYVA brings together tools and experiences that help you move forward with more focus, practice, and confidence.",
+    "heroCta": "See the learning experience",
+    "gridEyebrow": "Six pillars of the SAYVA experience",
+    "gridTitle": "Every capability has a reason.",
+    "items": {
+      "path": {
+        "title": "A clear learning path",
+        "body": "Instead of an endless content list, you get a structure that makes the next step easy to understand.",
+        "tag": "Direction"
+      },
+      "practice": {
+        "title": "Practice in the right place",
+        "body": "Practice works best when it connects to what you have just learned.",
+        "tag": "Continuity"
+      },
+      "context": {
+        "title": "Words in context",
+        "body": "Learn words closer to life—in sentences, situations, and use.",
+        "tag": "Use"
+      },
+      "ai": {
+        "title": "AI with a defined role",
+        "body": "AI helps with practice and speaking. It is never the source of truth for your path, progress, or identity.",
+        "tag": "Intelligence"
+      },
+      "bilingual": {
+        "title": "Two languages, one experience",
+        "body": "Persian and English are both first-class experiences, with the right readability and direction.",
+        "tag": "Native"
+      },
+      "calm": {
+        "title": "Designed for focus",
+        "body": "Color, space, and motion support the content instead of competing with it.",
+        "tag": "Calm"
+      }
+    },
+    "closingTitle": "More tools are not always the answer.",
+    "closingBody": "SAYVA tries to build each part with a clear intention: help you understand, practice, and use.",
+    "closingCta": "See the SAYVA method"
+  },
+  "experience": {
+    "metadataTitle": "Learning experience",
+    "metadataDescription": "A closer look at the SAYVA learning experience, from starting point to real use.",
+    "eyebrow": "The learning experience",
+    "title": "Learning lasts when it fits your life.",
+    "description": "A good experience does not leave you alone with a mountain of content. It helps you pay attention, practice, and use English with more confidence.",
+    "primaryCta": "Explore the capabilities",
+    "principlesTitle": "Three simple moves, one complete path",
+    "principles": {
+      "notice": {
+        "number": "1",
+        "title": "Notice and understand",
+        "body": "Every path starts by paying attention to language: a word, a pattern, a sentence worth seeing."
+      },
+      "practice": {
+        "number": "2",
+        "title": "Practice and return",
+        "body": "Short exercises and thoughtful returns help learning move beyond short-term memory."
+      },
+      "speak": {
+        "number": "3",
+        "title": "Put it to use",
+        "body": "The goal is not knowing about English. It is being able to use it in the moment."
+      }
+    },
+    "rhythmEyebrow": "A rhythm for real days",
+    "rhythmTitle": "Every day will not look the same.",
+    "rhythmBody": "Some days give you ten minutes, some give you more. SAYVA is designed to value continuity over intensity.",
+    "rhythmPoints": [
+      "A small start with less friction",
+      "Clear signals for what comes next",
+      "A space that respects your attention"
+    ],
+    "quote": "Learning is a collection of small moments of returning.",
+    "closingTitle": "Ready for the next step?",
+    "closingBody": "Explore the SAYVA approach and see what a clear learning experience can feel like.",
+    "closingCta": "Explore the capabilities"
+  },
+  "about": {
+    "metadataTitle": "About SAYVA",
+    "metadataDescription": "The thinking behind SAYVA’s precise, human English-learning experience.",
+    "eyebrow": "About SAYVA",
+    "title": "English, with more care and less pressure.",
+    "description": "SAYVA starts with a question: how can we build an experience that makes language learning clearer, more human, and easier to continue?",
+    "storyTitle": "Not a content list. A relationship with learning.",
+    "storyBody": "We believe in a product that listens before it speaks, clarifies the path instead of crowding the screen, and replaces big promises with one doable step at a time.",
+    "valuesEyebrow": "What we care about",
+    "values": {
+      "clarity": {
+        "title": "Clarity before complexity",
+        "body": "If something does not help you understand, it does not belong in the path."
+      },
+      "human": {
+        "title": "Technology with a human feel",
+        "body": "Intelligence should bring the experience closer, not make it colder or more distant."
+      },
+      "craft": {
+        "title": "Details with intention",
+        "body": "Space, words, movement, and color are all part of learning quality."
+      }
+    },
+    "identityTitle": "International in outlook, rooted in detail.",
+    "identityBody": "SAYVA’s visual language draws from architectural order, quiet geometry, and the calm of study spaces—without repeating clichés or adding decoration for its own sake.",
+    "closingTitle": "SAYVA is built for the path.",
+    "closingCta": "See the learning experience"
+  },
+  "faq": {
+    "metadataTitle": "FAQ",
+    "metadataDescription": "Answers to common questions about SAYVA’s public vision and learning experience.",
+    "eyebrow": "Frequently asked",
+    "title": "A few clear answers before the next step.",
+    "description": "If your question is not here, access and support details will be introduced clearly as the public product becomes available.",
+    "items": {
+      "what": {
+        "question": "What is SAYVA?",
+        "answer": "SAYVA is a bilingual English-learning platform that brings together a clear path, purposeful practice, and a calmer learning experience."
+      },
+      "who": {
+        "question": "Who is SAYVA for?",
+        "answer": "For learners who want to bring English into everyday life through consistent, useful practice—at any starting point and at a sustainable pace."
+      },
+      "ai": {
+        "question": "What role does AI have in SAYVA?",
+        "answer": "AI capabilities support practice and speaking in a defined role. AI is never the source of truth for your curriculum, progress, account, or learning history."
+      },
+      "bilingual": {
+        "question": "Are both Persian and English supported?",
+        "answer": "Yes. Persian is a first-class right-to-left experience and English is a first-class left-to-right experience, from copy and spacing to menus and layout."
+      },
+      "method": {
+        "question": "How is SAYVA different from a lesson list?",
+        "answer": "SAYVA is not only about presenting content. It is about sequence, returning, practice, and turning knowledge into use."
+      },
+      "start": {
+        "question": "Where should I start?",
+        "answer": "Start with the Features and Learning experience pages. They explain the SAYVA approach; access details will be shared clearly when the public product is released."
+      }
+    },
+    "ctaTitle": "Still have a question?",
+    "ctaBody": "If you did not find the answer, explore the learning experience in more detail.",
+    "cta": "See the learning experience"
+  },
+  "footer": {
+    "tagline": "For clearer learning, one step at a time.",
+    "product": "Product",
+    "company": "SAYVA",
+    "support": "Explore",
+    "features": "Features",
+    "experience": "Learning experience",
+    "about": "About SAYVA",
+    "faq": "FAQ",
+    "language": "Language",
+    "copyright": "© SAYVA. Built for the learning path."
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "locale": {
+    "switchTo": "فارسی"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The address is not valid or the page has moved.",
+    "backHome": "Back to home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "There was a problem showing this page. Please try again.",
+    "retry": "Try again",
+    "backHome": "Back to home"
+  },
+  "auth": {
+    "shell": {
+      "title": "Learning starts with a clear path.",
+      "body": "Your SAYVA account keeps your starting point in one place, so you can continue with calm, purpose, and consistency."
+    },
+    "signIn": {
+      "eyebrow": "Welcome back",
+      "title": "Sign in to SAYVA",
+      "description": "Enter your email and password to continue your learning path.",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "noAccount": "New to SAYVA?",
+      "createAccount": "Create an account",
+      "errors": {
+        "email": "Enter a valid email address.",
+        "password": "Your password must be at least 8 characters.",
+        "invalidCredentials": "The email or password is incorrect.",
+        "generic": "Sign in failed. Please try again."
+      }
+    },
+    "signUp": {
+      "eyebrow": "Start your path",
+      "title": "Create your SAYVA account",
+      "description": "A few short steps are all that stand between you and your learning space.",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "errors": {
+        "name": "Enter your name.",
+        "email": "Enter a valid email address.",
+        "password": "Your password must be 8 to 128 characters.",
+        "confirmPassword": "Passwords must match.",
+        "generic": "Account creation failed. Check the email and try again."
+      }
+    }
+  },
+  "onboarding": {
+    "eyebrow": "First step",
+    "title": "Set your SAYVA starting point",
+    "description": "Two quick choices help SAYVA understand where to begin and what matters most to you.",
+    "levelLabel": "What is your current English level?",
+    "goalLabel": "What matters most to you right now?",
+    "submit": "Continue to SAYVA",
+    "submitting": "Saving…",
+    "levels": {
+      "beginner": {
+        "title": "Beginner",
+        "body": "I am starting with the basics."
+      },
+      "elementary": {
+        "title": "Elementary",
+        "body": "I understand simple sentences."
+      },
+      "intermediate": {
+        "title": "Intermediate",
+        "body": "I can talk about familiar topics."
+      },
+      "upperIntermediate": {
+        "title": "Upper-intermediate",
+        "body": "I communicate in most situations."
+      },
+      "advanced": {
+        "title": "Advanced",
+        "body": "I want more accuracy and fluency."
+      }
+    },
+    "goals": {
+      "conversation": {
+        "title": "Conversation",
+        "body": "I want to speak more comfortably."
+      },
+      "work": {
+        "title": "Work",
+        "body": "I am strengthening English for work."
+      },
+      "travel": {
+        "title": "Travel",
+        "body": "I am preparing for travel situations."
+      },
+      "study": {
+        "title": "Study",
+        "body": "I want to learn and study more effectively."
+      },
+      "confidence": {
+        "title": "Confidence",
+        "body": "I want to use English with more confidence."
+      }
+    },
+    "errors": {
+      "level": "Choose a level.",
+      "goal": "Choose a goal.",
+      "unauthorized": "You need to be signed in to save this information.",
+      "database": "We could not save this yet. Check the database connection and try again."
+    }
+  },
+  "app": {
+    "eyebrow": "SAYVA space",
+    "title": "Welcome, {name}",
+    "description": "Your starting information is saved. SAYVA is here to keep your learning path clear and easy to continue.",
+    "pathTitle": "Your path is ready",
+    "pathBody": "This personal space is the starting point for SAYVA. Learning capabilities will be added in later phases.",
+    "readyTitle": "A clear start",
+    "readyBody": "Your starting profile has been saved successfully.",
+    "phaseNote": "This page intentionally shows only account and starting-point state. No later-phase learning functionality is active yet."
+  },
+  "learn": {
+    "home": {
+      "eyebrow": "Your learning space",
+      "title": "Keep your next step clear.",
+      "description": "Follow the published curriculum at a steady pace. Your completed lessons and current position come from the server.",
+      "currentLevel": "Current level",
+      "progress": "Lesson progress",
+      "nextStep": "Next lesson",
+      "curriculumEyebrow": "The SAYVA curriculum",
+      "curriculumTitle": "Choose where to look next.",
+      "currentEyebrow": "Your current path",
+      "currentTitle": "Continue with the next available lesson.",
+      "breadcrumb": "Learning home",
+      "allComplete": "You have completed every published lesson in this level."
+    },
+    "level": {
+      "eyebrow": "Published curriculum",
+      "title": "Courses in this level"
+    },
+    "labels": {
+      "course": "Course",
+      "unit": "Unit",
+      "lesson": "Lesson",
+      "minutesShort": "min"
+    },
+    "progress": {
+      "lessons": "{completed} of {total} lessons"
+    },
+    "actions": {
+      "openCourse": "Open course",
+      "viewAllLessons": "View all lessons",
+      "continue": "Continue lesson",
+      "openUnit": "Open unit",
+      "openLesson": "Open lesson"
+    },
+    "statuses": {
+      "completed": "Completed"
+    },
+    "empty": {
+      "curriculum": "No published curriculum is available yet.",
+      "levels": "Your learning level is waiting for published curriculum.",
+      "units": "No published units are available in this course yet.",
+      "lessons": "No published lessons are available in this unit yet."
+    },
+    "lesson": {
+      "breadcrumbs": {
+        "home": "Learning home"
+      },
+      "minutes": "min",
+      "completed": "Completed",
+      "objectives": "By the end of this lesson",
+      "finishTitle": "Mark your progress",
+      "alreadyComplete": "This lesson is already marked complete in your learning progress.",
+      "finishBody": "When you are ready, mark this lesson complete. SAYVA will save it to your account.",
+      "navigationLabel": "Lesson navigation",
+      "previous": "Previous lesson",
+      "next": "Next lesson",
+      "complete": "Complete lesson",
+      "completing": "Saving completion…",
+      "contentKinds": {
+        "introduction": "Introduction",
+        "explanation": "Explanation",
+        "example": "Example",
+        "summary": "Summary"
+      },
+      "errors": {
+        "unauthorized": "You need an active learner session to complete this lesson.",
+        "notFound": "This lesson is no longer available.",
+        "invalid": "The lesson completion request was invalid.",
+        "database": "We could not save your completion. Please try again."
+      }
+    },
+    "breadcrumbs": {
+      "label": "Learning breadcrumb"
+    }
+  },
+  "practice": {
+    "home": {
+      "eyebrow": "Focused practice",
+      "title": "Practice what you have learned.",
+      "description": "Short, deterministic exercises with server-checked answers and a clear next step.",
+      "available": "Available practice",
+      "exerciseCount": "{count} exercises",
+      "status": {
+        "active": "In progress",
+        "ready": "Ready"
+      },
+      "continue": "Continue",
+      "open": "Open practice",
+      "empty": "No published practice is available yet."
+    },
+    "eyebrow": "Practice session",
+    "backToPractice": "All practice",
+    "navigationLabel": "Practice navigation",
+    "status": {
+      "active": "In progress",
+      "ready": "Ready"
+    },
+    "actions": {
+      "start": "Start practice",
+      "starting": "Starting…"
+    },
+    "startTitle": "A small step, with a clear finish.",
+    "startBody": "This session has {count} exercises. Your place is saved on the server, so you can return after a refresh.",
+    "serverAuthority": "Answers and progress are checked on the server.",
+    "refresh": "Refresh session",
+    "viewResult": "View result",
+    "empty": "This practice set has no published exercises yet.",
+    "session": {
+      "completePending": "This session is complete. Your result is ready."
+    },
+    "errors": {
+      "UNAUTHORIZED": "You need an active learner session to practice.",
+      "INVALID": "This answer request was not valid.",
+      "NOT_FOUND": "This practice is no longer available.",
+      "EMPTY": "This practice has no published exercises yet.",
+      "DATABASE": "We could not save this practice state. Please try again.",
+      "NOT_ACTIVE": "This practice session is no longer active.",
+      "ALREADY_SUBMITTED": "This question was already submitted. Refresh to continue."
+    },
+    "question": {
+      "progress": "Question {current} of {total}",
+      "types": {
+        "multiple-choice": "Multiple choice",
+        "fill-blank": "Fill in the blank",
+        "matching": "Matching",
+        "ordering": "Ordering"
+      },
+      "submit": "Check answer",
+      "submitting": "Checking…",
+      "correct": "Correct",
+      "correctBody": "Your answer was accepted. Continue when you are ready.",
+      "incorrect": "Not quite",
+      "incorrectBody": "This answer was not accepted. Continue to the next question.",
+      "next": "Next question",
+      "viewResult": "View result",
+      "errors": {
+        "UNAUTHORIZED": "You need an active learner session to practice.",
+        "INVALID": "This answer request was not valid.",
+        "NOT_FOUND": "This practice question is no longer available.",
+        "NOT_ACTIVE": "This practice session is no longer active.",
+        "ALREADY_SUBMITTED": "This question was already submitted. Refresh to continue.",
+        "DATABASE": "We could not save this answer. Please try again."
+      },
+      "answerLabel": "Answer",
+      "orderItemsLabel": "Order items",
+      "moveUp": "Move {item} up",
+      "moveDown": "Move {item} down"
+    },
+    "result": {
+      "title": "Practice complete",
+      "score": "Score",
+      "correct": "Correct answers",
+      "correctCount": "{correct} of {total}",
+      "body": "This result belongs to the completed session on your account. A retry starts a new session and keeps this history.",
+      "retry": "Try again",
+      "allPractice": "All practice"
+    }
+  },
+  "domains": {
+    "navigationLabel": "Language domains",
+    "links": {
+      "vocabulary": "Vocabulary",
+      "grammar": "Grammar",
+      "listening": "Listening",
+      "reading": "Reading"
+    },
+    "actions": {
+      "practice": "Open practice"
+    },
+    "vocabulary": {
+      "states": {
+        "new": "New",
+        "learning": "Learning",
+        "known": "Known"
+      },
+      "home": {
+        "eyebrow": "Vocabulary",
+        "title": "Words worth returning to.",
+        "description": "Build a useful relationship with words through definitions, translation, examples, and a simple learner state.",
+        "available": "Available vocabulary",
+        "open": "Open word",
+        "empty": "No published vocabulary is available yet."
+      },
+      "detail": {
+        "back": "All vocabulary",
+        "definition": "Definition",
+        "examples": "Examples",
+        "stateTitle": "Your word state",
+        "stateLabel": "Choose the state that is honest for you right now.",
+        "pronunciation": "Pronunciation",
+        "audio": "Play pronunciation",
+        "states": {
+          "new": "New",
+          "learning": "Learning",
+          "known": "Known"
+        },
+        "saved": "Word state saved.",
+        "errors": {
+          "UNAUTHORIZED": "You need an active learner session.",
+          "INVALID": "This vocabulary update was invalid.",
+          "NOT_FOUND": "This vocabulary item is no longer available.",
+          "DATABASE": "We could not save this word state."
+        }
+      }
+    },
+    "grammar": {
+      "states": {
+        "in_progress": "In progress",
+        "completed": "Reviewed"
+      },
+      "home": {
+        "eyebrow": "Grammar",
+        "title": "See how English works.",
+        "description": "Read structured explanations, examples, and common mistakes without turning grammar into a wall of rules.",
+        "available": "Available topics",
+        "open": "Open topic",
+        "empty": "No published grammar topics are available yet."
+      },
+      "detail": {
+        "back": "All grammar",
+        "topic": "Grammar topic",
+        "explanation": "Explanation",
+        "examples": "Examples",
+        "commonMistakes": "Common mistakes",
+        "progressTitle": "Topic progress",
+        "markLearning": "Mark as studying",
+        "saving": "Saving…",
+        "complete": "Mark reviewed",
+        "completed": "Reviewed",
+        "saved": "Grammar progress saved.",
+        "errors": {
+          "UNAUTHORIZED": "You need an active learner session.",
+          "INVALID": "This grammar update was invalid.",
+          "NOT_FOUND": "This grammar topic is no longer available.",
+          "DATABASE": "We could not save grammar progress."
+        }
+      }
+    },
+    "listening": {
+      "states": {
+        "in_progress": "In progress",
+        "completed": "Completed"
+      },
+      "home": {
+        "eyebrow": "Listening",
+        "title": "Give language a little space to arrive.",
+        "description": "Listen with native browser controls, choose when to reveal the transcript, and mark the activity complete when the intended work is done.",
+        "available": "Available listening",
+        "open": "Open listening",
+        "seconds": "{count} seconds",
+        "durationUnknown": "Duration not listed",
+        "empty": "No published listening content is available yet."
+      },
+      "detail": {
+        "back": "All listening",
+        "lesson": "Listening activity",
+        "progressTitle": "Listening progress",
+        "markLearning": "Mark in progress",
+        "saving": "Saving…",
+        "complete": "Mark listening complete",
+        "completed": "Listening completed",
+        "saved": "Listening progress saved.",
+        "showTranscript": "Show transcript",
+        "transcript": "Transcript",
+        "downloadAudio": "Download or open audio",
+        "audioError": "This audio could not be loaded. Try the fallback link or return later.",
+        "errors": {
+          "UNAUTHORIZED": "You need an active learner session.",
+          "INVALID": "This listening update was invalid.",
+          "NOT_FOUND": "This listening item is no longer available.",
+          "DATABASE": "We could not save listening progress."
+        }
+      }
+    },
+    "reading": {
+      "states": {
+        "in_progress": "In progress",
+        "completed": "Completed"
+      },
+      "home": {
+        "eyebrow": "Reading",
+        "title": "A quieter place to read closely.",
+        "description": "Focused passages with semantic structure, comfortable measure, and a clear completion boundary.",
+        "available": "Available reading",
+        "open": "Open reading",
+        "minutes": "{count} min",
+        "empty": "No published reading content is available yet."
+      },
+      "detail": {
+        "back": "All reading",
+        "reading": "Reading",
+        "contentLabel": "Reading content",
+        "progressTitle": "Reading progress",
+        "markLearning": "Mark in progress",
+        "saving": "Saving…",
+        "complete": "Mark reading complete",
+        "completed": "Reading completed",
+        "saved": "Reading progress saved.",
+        "errors": {
+          "UNAUTHORIZED": "You need an active learner session.",
+          "INVALID": "This reading update was invalid.",
+          "NOT_FOUND": "This reading item is no longer available.",
+          "DATABASE": "We could not save reading progress."
+        }
+      }
+    }
+  },
+  "speaking": {
+    "navigationLabel": "AI Speaking",
+    "navigation": {
+      "home": "Speaking library"
+    },
+    "home": {
+      "eyebrow": "AI Speaking",
+      "title": "Speak with a clear purpose.",
+      "description": "Choose a scenario, prepare your idea, and record a short response. AI transcription and feedback stay on the server.",
+      "available": "Available scenarios",
+      "open": "Open scenario",
+      "duration": "Up to {count} seconds",
+      "level": "Level {value}",
+      "topic": "Topic: {value}",
+      "empty": "No published speaking scenarios are available yet."
+    },
+    "scenario": {
+      "back": "All speaking scenarios",
+      "context": "Context",
+      "role": "Your role",
+      "objective": "Your objective",
+      "success": "What success means",
+      "preparation": "Prepare your response",
+      "preparationDescription": "Take a moment to understand the task before you request microphone access.",
+      "tips": "Useful preparation tips",
+      "instructions": "Instructions",
+      "expectedLanguage": "Target language",
+      "duration": "Recording limit",
+      "seconds": "{count} seconds",
+      "begin": "Begin preparation",
+      "continuePermission": "Continue to microphone",
+      "recordingPrivacy": "Your recording is sent to the SAYVA server for processing. It is not kept as a permanent audio archive.",
+      "savedResult": "Open saved result"
+    },
+    "flow": {
+      "scenario": "Scenario",
+      "preparation": "Preparation",
+      "requesting_permission": "Microphone permission",
+      "ready": "Ready",
+      "recording": "Recording",
+      "processing": "Processing",
+      "transcript": "Transcript",
+      "feedback": "Feedback",
+      "error": "Needs attention"
+    },
+    "permission": {
+      "title": "Microphone permission",
+      "description": "SAYVA needs microphone access only when you choose to record. Nothing starts automatically. When recording begins, you can stop it at any time.",
+      "why": "Why access is needed",
+      "whyText": "The microphone captures your response so the server can request transcription and feedback from the approved AI boundary.",
+      "requesting": "Requesting microphone access…",
+      "denied": "Microphone permission was denied. Allow microphone access in your browser settings, then try again.",
+      "dismissed": "Microphone permission was dismissed. Try again when you are ready.",
+      "noMicrophone": "No microphone was found. Connect a microphone and try again.",
+      "unsupported": "Speaking recording is not supported in this browser.",
+      "secure": "Microphone access requires a secure context such as HTTPS.",
+      "unavailable": "The microphone could not be used. Check your device and browser permissions.",
+      "tryAgain": "Try permission again"
+    },
+    "ready": {
+      "title": "You are ready",
+      "description": "Start only when you are ready to answer the scenario. The recording will stop at the configured limit.",
+      "reminder": "Scenario reminder",
+      "start": "Start recording",
+      "back": "Back to preparation"
+    },
+    "recording": {
+      "title": "Recording",
+      "status": "Recording is active.",
+      "elapsed": "{count} seconds",
+      "limit": "Limit: {count} seconds",
+      "stop": "Stop recording",
+      "cancel": "Cancel recording",
+      "cancelDescription": "Cancel and discard this response."
+    },
+    "processing": {
+      "title": "Processing your response",
+      "description": "The server is securely processing the temporary recording. There is no artificial progress percentage.",
+      "status": "Your response is being analyzed."
+    },
+    "transcript": {
+      "title": "Transcript",
+      "description": "This transcript came from the server-side transcription result.",
+      "viewFeedback": "View feedback",
+      "retry": "Retry this scenario"
+    },
+    "feedback": {
+      "title": "AI feedback",
+      "description": "Educational observations for this scenario, not a formal score or pronunciation measurement.",
+      "overall": "Overall",
+      "strengths": "Strengths",
+      "areasToImprove": "Areas to improve",
+      "grammarNotes": "Grammar notes",
+      "vocabularySuggestions": "Vocabulary suggestions",
+      "fluencyNotes": "Fluency notes",
+      "corrections": "Correction examples",
+      "original": "You said",
+      "improved": "Try",
+      "explanation": "Why",
+      "nextAttempt": "For the next attempt",
+      "retry": "Retry",
+      "continue": "Continue to speaking library",
+      "savedResult": "Open saved result"
+    },
+    "results": {
+      "back": "Back to scenario",
+      "completed": "Completed attempt",
+      "transcript": "Transcript",
+      "feedbackUnavailable": "Your transcript is available, but feedback is temporarily unavailable. Please retry this scenario.",
+      "retry": "Retry scenario",
+      "continue": "Continue to speaking library",
+      "failed": "This attempt could not be completed.",
+      "started": "This attempt has not been submitted yet.",
+      "processing": "This attempt is still processing. Return shortly or retry if it failed."
+    },
+    "errors": {
+      "UNAUTHORIZED": "You need an active learner session.",
+      "INVALID": "This speaking request was invalid.",
+      "NOT_FOUND": "This speaking scenario or attempt is no longer available.",
+      "DATABASE": "We could not save this speaking attempt.",
+      "AI_PROVIDER_NOT_CONFIGURED": "AI Speaking is not available yet because no approved AI provider is configured. Your recording was not treated as a successful attempt.",
+      "AI_OUTPUT_INVALID": "The AI provider returned an invalid result. Please retry this attempt.",
+      "TRANSCRIPTION_FAILED": "Transcription failed. Please retry this attempt.",
+      "FEEDBACK_FAILED": "Your transcript is available, but feedback could not be generated. Please retry this scenario.",
+      "PROCESSING_TIMEOUT": "Speaking processing timed out. Please retry this attempt.",
+      "PROCESSING_FAILED": "Speaking processing failed. Please retry this attempt.",
+      "INVALID_AUDIO": "The recording format or metadata was not accepted. Please record again.",
+      "AUDIO_REQUIRED": "A recording is required.",
+      "AUDIO_TOO_LARGE": "This recording is too large. Record a shorter response.",
+      "RECORDING_LIMIT_EXCEEDED": "The recording exceeded the scenario limit. Please record again.",
+      "ATTEMPT_NOT_ACCEPTING_AUDIO": "This attempt is no longer accepting a recording. Start a new attempt.",
+      "INVALID_REQUEST": "The recording request was invalid.",
+      "CANCELLED": "The recording was cancelled."
+    }
+  },
+  "progress": {
+    "eyebrow": "A clearer view of your path",
+    "title": "Your progress",
+    "description": "See where you are, what you have completed, and the next useful step—without turning learning into a score.",
+    "position": {
+      "title": "Current position",
+      "eyebrow": "Current position",
+      "noLesson": "Your path is clear for now",
+      "noLessonDescription": "There is no next published lesson in your current level yet. Explore the learning domains or return when new content is available.",
+      "continue": "Continue lesson"
+    },
+    "learning": {
+      "completion": "Current level completion",
+      "lessons": "{completed} of {total} lessons"
+    },
+    "overview": {
+      "title": "At a glance"
+    },
+    "practice": {
+      "accuracy": "Practice accuracy",
+      "attempts": "{count} answered attempts",
+      "sessions": "Completed practice sessions",
+      "correct": "{correct} correct answers",
+      "evidence": {
+        "insufficient": "Not enough recent data",
+        "developing": "Early signal",
+        "reliable": "Reliable recent signal"
+      }
+    },
+    "activity": {
+      "title": "Active days, last 30 days",
+      "last": "Last activity: {date} UTC",
+      "none": "No completed activity in this window"
+    },
+    "recommendation": {
+      "title": "Next useful step",
+      "none": "Keep exploring at your own pace. A recommendation will appear when there is enough meaningful activity to guide it.",
+      "open": "Open",
+      "practice": "Practice",
+      "reasons": {
+        "next-lesson": "Continue the next published lesson in your current learning path.",
+        "recent-practice": "Recent practice accuracy is below the attention threshold. More practice can help reinforce the material.",
+        "unfinished-domain": "You have started this domain and it still has unfinished published content.",
+        "review-state": "Some vocabulary is still marked as learning and is ready for another review.",
+        "practice-history": "You have completed practice before; returning to it is a useful next step."
+      }
+    },
+    "domains": {
+      "title": "Domain progress",
+      "description": "Derived from published content and your saved domain states.",
+      "vocabulary": "Vocabulary",
+      "grammar": "Grammar",
+      "listening": "Listening",
+      "reading": "Reading",
+      "known": "{known} known · {learning} learning of {total} published",
+      "completed": "{completed} completed of {total} published",
+      "open": "Open"
+    },
+    "speaking": {
+      "title": "AI Speaking",
+      "completed": "{count} valid completed attempts",
+      "providerUnavailable": "Feedback is unavailable while the AI provider is not configured. This is not counted as learner failure.",
+      "noData": "No valid speaking result yet."
+    }
+  },
+  "admin": {
+    "eyebrow": "Content operations",
+    "title": "Admin",
+    "description": "Manage authoritative SAYVA content without bypassing the existing publication boundaries.",
+    "dashboard": "Dashboard",
+    "curriculum": "Curriculum",
+    "practice": "Practice content",
+    "content": "Content",
+    "new": "New content",
+    "edit": "Edit content",
+    "save": "Save draft",
+    "saving": "Saving…",
+    "saved": "Saved.",
+    "publish": "Publish",
+    "draft": "Move to draft",
+    "archive": "Archive",
+    "status": "Status",
+    "level": "Level",
+    "order": "Order",
+    "updated": "Updated",
+    "actions": "Actions",
+    "open": "Open",
+    "back": "Back to admin",
+    "create": "Create",
+    "noResults": "No content matches this filter.",
+    "filterStatus": "Filter status",
+    "filterLevel": "Filter level",
+    "allStatuses": "All statuses",
+    "allLevels": "All levels",
+    "statuses": {
+      "draft": "Draft",
+      "published": "Published",
+      "archived": "Archived"
+    },
+    "fields": {
+      "slug": "Slug",
+      "word": "Word",
+      "partOfSpeech": "Part of speech",
+      "titleFa": "Title (Persian)",
+      "titleEn": "Title (English)",
+      "descriptionFa": "Description (Persian)",
+      "descriptionEn": "Description (English)",
+      "definitionFa": "Definition (Persian)",
+      "definitionEn": "Definition (English)",
+      "translationFa": "Translation (Persian)",
+      "translationEn": "Translation (English)",
+      "summaryFa": "Summary (Persian)",
+      "summaryEn": "Summary (English)",
+      "explanationFa": "Explanation (Persian)",
+      "explanationEn": "Explanation (English)",
+      "instructionsFa": "Instructions (Persian)",
+      "instructionsEn": "Instructions (English)",
+      "contextFa": "Context (Persian)",
+      "contextEn": "Context (English)",
+      "roleFa": "Role (Persian)",
+      "roleEn": "Role (English)",
+      "objectiveFa": "Objective (Persian)",
+      "objectiveEn": "Objective (English)",
+      "audioSrc": "Local audio path",
+      "durationSeconds": "Duration seconds",
+      "transcriptVisibility": "Transcript visibility",
+      "transcript": "Transcript JSON",
+      "examples": "Examples JSON",
+      "commonMistakes": "Common mistakes JSON",
+      "pronunciation": "Pronunciation JSON",
+      "sections": "Reading sections JSON",
+      "successCriteria": "Success criteria JSON",
+      "preparationTips": "Preparation tips JSON",
+      "level": "Level slug",
+      "topic": "Topic",
+      "durationLimitSeconds": "Recording limit seconds",
+      "expectedLanguage": "Expected language",
+      "order": "Order",
+      "lessonId": "Lesson id",
+      "practiceSetId": "Practice set id"
+    },
+    "help": {
+      "json": "Enter a JSON array/object matching the existing content shape. The server validates it before saving.",
+      "audio": "Only repository-local paths beginning with /audio/ are accepted.",
+      "draft": "New content is saved as Draft. Publishing runs stronger validation."
+    },
+    "errors": {
+      "generic": "The request could not be completed.",
+      "UNAUTHORIZED": "Your session is not authorized.",
+      "FORBIDDEN": "Administrator access is required.",
+      "INVALID": "Some fields are invalid.",
+      "NOT_FOUND": "Content was not found.",
+      "DUPLICATE": "A unique value is already in use.",
+      "DATABASE": "The content could not be saved."
+    },
+    "dashboardStats": {
+      "levels": "Levels",
+      "vocabulary": "Vocabulary",
+      "grammar": "Grammar",
+      "listening": "Listening",
+      "reading": "Reading",
+      "speaking": "Speaking scenarios",
+      "practiceSets": "Practice sets"
+    },
+    "domains": {
+      "vocabulary": "Vocabulary",
+      "grammar": "Grammar",
+      "listening": "Listening",
+      "reading": "Reading",
+      "speaking": "Speaking scenarios"
+    },
+    "warnings": {
+      "provider": "AI provider remains not configured. Scenario management does not configure a provider."
+    }
+  }
+}

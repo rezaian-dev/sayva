@@ -1,0 +1,118 @@
+import type { Metadata } from "next";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
+
+import { SiteFooter } from "@/components/public/site-footer";
+import { SiteHeader } from "@/components/public/site-header";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { DirectionProvider } from "@/components/ui/direction";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { localeDirection, routing } from "@/i18n/routing";
+import { inter, vazirmatn } from "@/lib/fonts";
+
+import "../globals.css";
+
+type LayoutProps = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};
+
+/**
+ * Enables static prerendering of both locales at build time.
+ */
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: Omit<LayoutProps, "children">): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = hasLocale(routing.locales, rawLocale)
+    ? rawLocale
+    : routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const siteUrl = configuredSiteUrl ?? "http://localhost:3000";
+  const localizedPath = `/${locale}`;
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: t("title"),
+      template: `%s | ${t("title")}`,
+    },
+    description: t("description"),
+    alternates: configuredSiteUrl
+      ? {
+          canonical: localizedPath,
+          languages: {
+            fa: "/fa",
+            en: "/en",
+          },
+        }
+      : undefined,
+    openGraph: {
+      type: "website",
+      siteName: t("siteName"),
+      locale: locale === "fa" ? "fa_IR" : "en_US",
+      url: localizedPath,
+      title: t("title"),
+      description: t("description"),
+      images: [
+        {
+          url: "/images/sayva-study-studio.jpg",
+          width: 1200,
+          height: 800,
+          alt: t("description"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/images/sayva-study-studio.jpg"],
+    },
+  };
+}
+
+export default async function LocaleLayout({ children, params }: LayoutProps) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  const dir = localeDirection(locale);
+
+  return (
+    <html
+      lang={locale}
+      dir={dir}
+      suppressHydrationWarning
+      className={`${vazirmatn.variable} ${inter.variable}`}
+    >
+      <body className="flex min-h-dvh flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider>
+            <DirectionProvider dir={dir}>
+              <TooltipProvider delayDuration={200}>
+                <SiteHeader locale={locale} />
+                <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+                <SiteFooter locale={locale} />
+              </TooltipProvider>
+            </DirectionProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
