@@ -34,12 +34,20 @@ export async function generateMetadata({
     : routing.defaultLocale;
   const t = await getTranslations({ locale, namespace: "metadata" });
 
-  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  const configuredSiteUrl = rawSiteUrl ? rawSiteUrl : undefined;
   const siteUrl = configuredSiteUrl ?? "http://localhost:3000";
   const localizedPath = `/${locale}`;
 
+  let metadataBase: URL | undefined;
+  try {
+    metadataBase = new URL(siteUrl);
+  } catch {
+    metadataBase = new URL("http://localhost:3000");
+  }
+
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase,
     title: {
       default: t("title"),
       template: `%s | ${t("title")}`,

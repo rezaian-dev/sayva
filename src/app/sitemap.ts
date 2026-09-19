@@ -4,7 +4,8 @@ const locales = ["fa", "en"] as const;
 const paths = ["", "/features", "/experience", "/about", "/faq"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
 
   return paths.flatMap((path) =>
     locales.map((locale) => ({

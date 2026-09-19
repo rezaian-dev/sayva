@@ -5,17 +5,17 @@ import { hasLocale } from "next-intl";
 import { routing } from "./routing";
 
 export default getRequestConfig(async ({ locale }) => {
-  if (!locale) {
-    const paramValue = await rootParams.locale();
-    if (hasLocale(routing.locales, paramValue)) {
-      locale = paramValue;
-    } else {
-      notFound();
-    }
+  const resolvedLocale = locale ?? (await rootParams.locale()) ?? undefined;
+
+  // Any non-locale path segment (e.g. a stray `/favicon.ico` request matched
+  // by the dynamic [locale] route) must 404 instead of crashing the
+  // messages import below with MODULE_NOT_FOUND.
+  if (!hasLocale(routing.locales, resolvedLocale)) {
+    notFound();
   }
 
   return {
-    locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    locale: resolvedLocale,
+    messages: (await import(`../../messages/${resolvedLocale}.json`)).default,
   };
 });
