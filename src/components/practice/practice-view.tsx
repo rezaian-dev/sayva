@@ -35,7 +35,7 @@ export async function PracticeView({
           </nav>
 
           <header className="mb-8">
-            <p className="text-label text-gold">{t("eyebrow")}</p>
+            <p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold"><span aria-hidden className="eyebrow-rule" />{t("eyebrow")}</p>
             <h1 className="text-h1 mt-3">{localize(data.set.title, locale)}</h1>
             <p className="text-body mt-4 text-muted-foreground">{localize(data.set.description, locale)}</p>
           </header>

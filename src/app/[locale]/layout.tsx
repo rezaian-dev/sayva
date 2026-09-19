@@ -63,10 +63,10 @@ export async function generateMetadata({
       description: t("description"),
       images: [
         {
-          url: "/images/sayva-study-studio.jpg",
+          url: "/images/og/og-cover.jpg",
           width: 1200,
-          height: 800,
-          alt: t("description"),
+          height: 630,
+          alt: t("siteName"),
         },
       ],
     },
@@ -74,7 +74,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["/images/sayva-study-studio.jpg"],
+      images: ["/images/og/og-cover.jpg"],
     },
   };
 }
@@ -88,6 +88,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   const dir = localeDirection(locale);
 
+
   return (
     <html
       lang={locale}
@@ -95,6 +96,15 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       suppressHydrationWarning
       className={`${vazirmatn.variable} ${inter.variable}`}
     >
+      <head>
+        {/* Scroll-reveal content ships with a hidden initial style (opacity:0)
+            in the HTML so the client can animate it in. If no JavaScript
+            ever runs, nothing would make it visible — guarantee visibility
+            with no motion. */}
+        <noscript>
+          <style>{`[data-motion-reveal]{opacity:1!important;transform:none!important;}`}</style>
+        </noscript>
+      </head>
       <body className="flex min-h-dvh flex-col">
         <ThemeProvider
           attribute="class"
