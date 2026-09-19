@@ -9,6 +9,7 @@ import { localize } from "@/lib/learning/localize";
 import { practicePath } from "@/lib/practice/paths";
 import type { AppLocale } from "@/i18n/routing";
 import type { PracticeHomeData } from "@/lib/practice/types";
+import { EmptyState } from "@/components/domains/empty-state";
 
 export async function PracticeHome({
   data,
@@ -25,7 +26,7 @@ export async function PracticeHome({
       <Container>
         <div className="mx-auto w-full max-w-5xl">
           <header className="max-w-3xl">
-            <p className="text-label text-gold">{t("eyebrow")}</p>
+            <p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold"><span aria-hidden className="eyebrow-rule" />{t("eyebrow")}</p>
             <h1 className="text-h1 mt-3">{t("title")}</h1>
             <p className="text-body mt-4 text-muted-foreground">{t("description")}</p>
           </header>
@@ -67,11 +68,7 @@ export async function PracticeHome({
                 ))}
               </div>
             ) : (
-              <Card>
-                <CardContent className="py-10">
-                  <p className="text-body text-muted-foreground">{t("empty")}</p>
-                </CardContent>
-              </Card>
+              <EmptyState message={t("empty")} />
             )}
           </section>
         </div>

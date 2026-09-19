@@ -9,14 +9,15 @@ import { Link } from "@/i18n/navigation";
 import { localize } from "@/lib/learning/localize";
 import type { ReadingListItem } from "@/lib/domains/types";
 import type { AppLocale } from "@/i18n/routing";
+import { EmptyState } from "@/components/domains/empty-state";
 
 export async function ReadingHome({ data, locale }: { data: { items: ReadingListItem[] }; locale: AppLocale }) {
   const t = await getTranslations("domains.reading.home");
   const Arrow = locale === "fa" ? ArrowUpLeft : ArrowUpRight;
   return <main className="flex flex-1 bg-muted/30 py-10 md:py-16"><Container><div className="mx-auto w-full max-w-6xl">
-    <DomainNavigation /><header className="mt-8 max-w-3xl"><p className="text-label text-gold">{t("eyebrow")}</p><h1 className="text-h1 mt-3">{t("title")}</h1><p className="text-body mt-4 text-muted-foreground">{t("description")}</p></header>
+    <DomainNavigation /><header className="mt-8 max-w-3xl"><p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold"><span aria-hidden className="eyebrow-rule" />{t("eyebrow")}</p><h1 className="text-h1 mt-3">{t("title")}</h1><p className="text-body mt-4 text-muted-foreground">{t("description")}</p></header>
     <section className="mt-10" aria-labelledby="reading-list"><div className="mb-5 flex items-end justify-between gap-4"><h2 id="reading-list" className="text-h2">{t("available")}</h2><span className="text-body-sm text-muted-foreground">{data.items.length}</span></div>
-      {data.items.length ? <div className="grid gap-4 md:grid-cols-2">{data.items.map((item) => <Card key={item.id}><CardHeader><div className="flex items-start justify-between gap-3"><CardTitle className="flex items-center gap-2"><BookOpenText aria-hidden className="size-5 text-gold" />{localize(item.title, locale)}</CardTitle><ProgressBadge domain="reading" state={item.state} /></div><p className="text-body-sm text-muted-foreground">{localize(item.summary, locale)}</p></CardHeader><CardContent className="flex items-center justify-between gap-3"><span className="text-body-sm text-muted-foreground">{item.estimatedDuration ? t("minutes", { count: item.estimatedDuration }) : ""}</span><Link href={`/reading/${item.id}`} className="inline-flex items-center gap-2 text-body-sm font-medium text-primary hover:underline">{t("open")}<Arrow aria-hidden /></Link></CardContent></Card>)}</div> : <Card><CardContent className="py-10"><p className="text-body text-muted-foreground">{t("empty")}</p></CardContent></Card>}
+      {data.items.length ? <div className="grid gap-4 md:grid-cols-2">{data.items.map((item) => <Card key={item.id}><CardHeader><div className="flex items-start justify-between gap-3"><CardTitle className="flex items-center gap-2"><BookOpenText aria-hidden className="size-5 text-gold" />{localize(item.title, locale)}</CardTitle><ProgressBadge domain="reading" state={item.state} /></div><p className="text-body-sm text-muted-foreground">{localize(item.summary, locale)}</p></CardHeader><CardContent className="flex items-center justify-between gap-3"><span className="text-body-sm text-muted-foreground">{item.estimatedDuration ? t("minutes", { count: item.estimatedDuration }) : ""}</span><Link href={`/reading/${item.id}`} className="inline-flex items-center gap-2 text-body-sm font-medium text-primary hover:underline">{t("open")}<Arrow aria-hidden /></Link></CardContent></Card>)}</div> : <EmptyState message={t("empty")} />}
     </section>
   </div></Container></main>;
 }

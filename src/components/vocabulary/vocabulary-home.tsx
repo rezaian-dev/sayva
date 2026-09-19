@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { localize } from "@/lib/learning/localize";
 import type { VocabularyListItem } from "@/lib/domains/types";
 import type { AppLocale } from "@/i18n/routing";
+import { EmptyState } from "@/components/domains/empty-state";
 
 export async function VocabularyHome({ data, locale }: { data: { items: VocabularyListItem[] }; locale: AppLocale }) {
   const t = await getTranslations("domains.vocabulary.home");
@@ -20,7 +21,7 @@ export async function VocabularyHome({ data, locale }: { data: { items: Vocabula
         <div className="mx-auto w-full max-w-6xl">
           <DomainNavigation />
           <header className="mt-8 max-w-3xl">
-            <p className="text-label text-gold">{t("eyebrow")}</p>
+            <p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold"><span aria-hidden className="eyebrow-rule" />{t("eyebrow")}</p>
             <h1 className="text-h1 mt-3">{t("title")}</h1>
             <p className="text-body mt-4 text-muted-foreground">{t("description")}</p>
           </header>
@@ -54,7 +55,7 @@ export async function VocabularyHome({ data, locale }: { data: { items: Vocabula
                 ))}
               </div>
             ) : (
-              <Card><CardContent className="py-10"><p className="text-body text-muted-foreground">{t("empty")}</p></CardContent></Card>
+              <EmptyState message={t("empty")} />
             )}
           </section>
         </div>

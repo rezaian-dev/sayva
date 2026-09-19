@@ -32,7 +32,7 @@ export async function LevelView({
             </p>
           </div>
           <div className="mb-5">
-            <p className="text-label text-gold">{t("level.eyebrow")}</p>
+            <p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold"><span aria-hidden className="eyebrow-rule" />{t("level.eyebrow")}</p>
             <h2 className="text-h2 mt-2">{t("level.title")}</h2>
           </div>
           <CourseOutline levelSlug={level.slug} courses={courses} locale={locale} />

@@ -9,7 +9,14 @@ if (isProductionRuntime && !configuredMongoUri) {
   throw new Error("MONGODB_URI must be configured before starting SAYVA in production.");
 }
 
-const mongodbUri = configuredMongoUri ?? "mongodb://localhost:27017/";
+/**
+ * The one authoritative database target for the whole app:
+ * host mongodb://localhost:27017/, database `sayva`. Every domain
+ * collection (vocabulary_items, grammar_topics, listening_items, ...)
+ * lives inside that single database; the database name never merges
+ * collections together.
+ */
+const mongodbUri = configuredMongoUri ?? "mongodb://localhost:27017/sayva";
 
 const globalForMongo = globalThis as unknown as {
   mongoClient?: MongoClient;

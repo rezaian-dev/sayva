@@ -1,12 +1,13 @@
+import Image from "next/image";
 import type { Metadata } from "next";
-import { BrainCircuit, Compass, Layers3, Sparkles } from "lucide-react";
+import { Compass, Layers3, MessageCircle } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { CtaLink } from "@/components/public/cta-link";
 import { FeatureIcon } from "@/components/public/feature-icon";
-import { SectionIntro } from "@/components/public/section-intro";
+import { Reveal } from "@/components/motion/reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { Container } from "@/components/container";
-import { Card, CardContent } from "@/components/ui/card";
 import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -30,6 +31,10 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * FEATURES — an asymmetric bento, not six identical boxes. Two image-led
+ * panels carry the weight; four quiet panels keep the rhythm.
+ */
 export default async function FeaturesPage({
   params,
 }: {
@@ -37,69 +42,134 @@ export default async function FeaturesPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "features" });
-  const items = ["path", "practice", "context", "ai", "bilingual", "calm"] as const;
-  const icons = ["path", "practice", "context", "ai", "bilingual", "calm"] as const;
+
+  const imageCards = {
+    path: "/images/learning/study-desk.jpg",
+    ai: "/images/speaking/friends-speaking.jpg",
+  } as const;
+
+  const itemCells = [
+    { item: "path" as const, span: "md:col-span-4" },
+    { item: "practice" as const, span: "md:col-span-2" },
+    { item: "context" as const, span: "md:col-span-2" },
+    { item: "ai" as const, span: "md:col-span-4" },
+    { item: "bilingual" as const, span: "md:col-span-3" },
+    { item: "calm" as const, span: "md:col-span-3" },
+  ];
 
   return (
     <main>
-      <section className="relative overflow-hidden border-b bg-card">
-        <div aria-hidden className="pointer-events-none absolute -end-24 -top-24 size-72 rounded-full border border-gold/30" />
-        <div aria-hidden className="pointer-events-none absolute -end-12 -top-12 size-48 rounded-full border border-gold/20" />
-        <Container className="relative py-20 sm:py-24 lg:py-32">
+      {/* ── Intro ────────────────────────────────────────────────────── */}
+      <section className="relative isolate overflow-hidden border-b border-border/70 bg-background">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-khatam" />
+        <Container className="relative py-20 sm:py-24 lg:py-28">
           <div className="max-w-3xl">
-            <p className="text-caption font-semibold uppercase tracking-[0.16em] text-gold">{t("eyebrow")}</p>
-            <h1 className="text-display mt-5">{t("title")}</h1>
-            <p className="text-body mt-6 max-w-2xl text-muted-foreground">{t("description")}</p>
-            <CtaLink href="/experience" locale={locale} className="mt-8">
-              {t("heroCta")}
-            </CtaLink>
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-background">
-        <Container className="py-20 lg:py-28">
-          <SectionIntro eyebrow={t("gridEyebrow")} title={t("gridTitle")} />
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {items.map((item, index) => (
-              <Card key={item} className="group min-h-64 border-border/80 bg-card transition-all hover:-translate-y-1 hover:shadow-raised">
-                <CardContent className="flex h-full flex-col p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    <FeatureIcon name={icons[index]} />
-                    <span className="font-en text-caption font-semibold tracking-[0.16em] text-muted-foreground">0{index + 1}</span>
-                  </div>
-                  <div className="mt-auto pt-12">
-                    <p className="text-caption mb-2 font-semibold uppercase tracking-[0.12em] text-gold">{t(`items.${item}.tag`)}</p>
-                    <h2 className="text-h3">{t(`items.${item}.title`)}</h2>
-                    <p className="text-body-sm mt-3 text-muted-foreground">{t(`items.${item}.body`)}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-muted/50">
-        <Container className="grid gap-10 py-20 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:py-28">
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-primary p-8 text-primary-foreground shadow-raised sm:p-12">
-            <div aria-hidden className="absolute -end-16 -top-16 size-48 rounded-full border border-gold/30" />
-            <div aria-hidden className="absolute -end-6 -top-6 size-28 rounded-full border border-gold/20" />
-            <Sparkles aria-hidden className="relative size-8 text-gold" />
-            <h2 className="text-h2 relative mt-16 max-w-md">{t("closingTitle")}</h2>
-            <p className="text-body-sm relative mt-4 max-w-md text-primary-foreground/75">{t("closingBody")}</p>
-            <CtaLink href="/experience" locale={locale} variant="secondary" className="relative mt-8">
-              {t("closingCta")}
-            </CtaLink>
-          </div>
-          <div className="grid grid-cols-3 gap-3 text-center sm:gap-5">
-            {[Compass, Layers3, BrainCircuit].map((Icon, index) => (
-              <div key={index} className="flex aspect-square flex-col items-center justify-center rounded-2xl border border-border bg-card p-3 sm:p-5">
-                <Icon aria-hidden className="size-6 text-gold sm:size-7" strokeWidth={1.5} />
-                <span className="font-en text-caption mt-4 text-muted-foreground">0{index + 1}</span>
+            <Reveal>
+              <p className="text-caption mb-5 flex items-center gap-3 font-semibold uppercase tracking-[0.18em] text-gold">
+                <span aria-hidden className="eyebrow-rule" />
+                {t("eyebrow")}
+              </p>
+              <h1 className="text-display">{t("title")}</h1>
+              <p className="text-body mt-6 max-w-2xl text-muted-foreground">{t("description")}</p>
+              <div className="mt-9">
+                <CtaLink href="/experience" locale={locale}>
+                  {t("heroCta")}
+                </CtaLink>
               </div>
-            ))}
+            </Reveal>
           </div>
+        </Container>
+      </section>
+
+      {/* ── Bento ────────────────────────────────────────────────────── */}
+      <section className="bg-background">
+        <Container className="py-16 lg:py-24">
+          <Reveal className="max-w-2xl">
+            <p className="text-caption mb-4 font-semibold uppercase tracking-[0.16em] text-gold">
+              {t("gridEyebrow")}
+            </p>
+            <h2 className="text-h2">{t("gridTitle")}</h2>
+          </Reveal>
+          <div className="mt-10 grid gap-5 md:grid-cols-6">
+            <StaggerGroup className="contents" stagger={0.07}>
+              {itemCells.map(({ item, span }, index) => {
+                const withImage = item in imageCards;
+                return (
+                  <StaggerItem
+                    key={item}
+                    className={`${span} group relative overflow-hidden rounded-2xl border border-border/70 bg-card transition-shadow duration-300 hover:shadow-raised`}
+                  >
+                    {withImage ? (
+                      <div className="relative h-44 overflow-hidden sm:h-48">
+                        <Image
+                          src={imageCards[item as keyof typeof imageCards]}
+                          alt={t(`items.${item}.title`)}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        />
+                        <div
+                          aria-hidden
+                          className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent"
+                        />
+                      </div>
+                    ) : null}
+                    <div className={`${withImage ? "relative -mt-8" : "p-6 sm:p-7"} flex flex-col p-6 sm:p-7`}>
+                      <div className="flex items-start justify-between gap-4">
+                        <FeatureIcon name={item} />
+                        <span className="font-en text-caption font-semibold tracking-[0.16em] text-muted-foreground">
+                          0{index + 1}
+                        </span>
+                      </div>
+                      <div className="mt-6">
+                        <p className="text-caption font-semibold uppercase tracking-[0.12em] text-gold">
+                          {t(`items.${item}.tag`)}
+                        </p>
+                        <h2 className="text-h3 mt-1.5">{t(`items.${item}.title`)}</h2>
+                        <p className="text-body-sm mt-2.5 text-muted-foreground">
+                          {t(`items.${item}.body`)}
+                        </p>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                );
+              })}
+            </StaggerGroup>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Closing panel ────────────────────────────────────────────── */}
+      <section className="border-t border-border/70 bg-muted/40">
+        <Container className="grid gap-10 py-16 lg:grid-cols-[1fr_0.7fr] lg:items-center lg:py-24">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-2xl bg-deep p-8 text-deep-foreground shadow-raised sm:p-12">
+              <div aria-hidden className="pointer-events-none absolute inset-0 bg-khatam-deep" />
+              <span aria-hidden className="eyebrow-rule relative mb-6" />
+              <h2 className="text-h2 relative max-w-md text-deep-foreground">{t("closingTitle")}</h2>
+              <p className="text-body-sm relative mt-4 max-w-md text-deep-muted">{t("closingBody")}</p>
+              <CtaLink href="/experience" locale={locale} variant="onDeep" className="relative mt-8">
+                {t("closingCta")}
+              </CtaLink>
+            </div>
+          </Reveal>
+          <StaggerGroup className="grid grid-cols-3 gap-3 sm:gap-5" stagger={0.1}>
+            {[
+              { icon: Compass, label: t("items.path.tag") },
+              { icon: Layers3, label: t("items.context.tag") },
+              { icon: MessageCircle, label: t("items.bilingual.tag") },
+            ].map(({ icon: Icon, label }, index) => (
+              <StaggerItem
+                key={index}
+                className="flex flex-col items-center gap-4 rounded-2xl border border-border/70 bg-card p-4 text-center sm:p-6"
+              >
+                <span className="flex size-12 items-center justify-center rounded-full border border-gold/40 bg-accent text-accent-foreground sm:size-14">
+                  <Icon aria-hidden className="size-5 sm:size-6" strokeWidth={1.5} />
+                </span>
+                <span className="text-caption text-muted-foreground">{label}</span>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
         </Container>
       </section>
     </main>

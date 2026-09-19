@@ -1,6 +1,7 @@
-import { ArrowUpLeft, ArrowUpRight, Globe2, Menu, Sparkles } from "lucide-react";
+import { ArrowUpLeft, ArrowUpRight, Globe2, Menu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { AuthenticatedNav } from "@/components/public/authenticated-nav";
 import { Container } from "@/components/container";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -23,6 +24,29 @@ function DirectionalArrow({ locale }: { locale: AppLocale }) {
   return <Icon aria-hidden className="size-4" />;
 }
 
+function NavLink({
+  href,
+  children,
+  active = false,
+}: {
+  href: string;
+  children: React.ReactNode;
+  active?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`relative py-1 text-body-sm font-medium transition-colors duration-200 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-center after:bg-gold after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:scale-x-100 ${
+        active
+          ? "text-foreground after:scale-x-100"
+          : "text-muted-foreground after:scale-x-0"
+      }`}
+    >
+      {children}
+    </Link>
+  );
+}
+
 export async function SiteHeader({ locale }: { locale: AppLocale }) {
   const t = await getTranslations("nav");
   const otherLocale = routing.locales.find((item) => item !== locale) ?? locale;
@@ -35,39 +59,32 @@ export async function SiteHeader({ locale }: { locale: AppLocale }) {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/75">
-      <Container className="flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
+      <Container className="flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
         <Link
           href="/"
           aria-label="SAYVA"
-          className="group flex shrink-0 items-center gap-2 text-foreground"
+          className="group flex shrink-0 items-center"
         >
-          <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-soft transition-transform group-hover:-rotate-6">
-            <Sparkles aria-hidden className="size-4" />
-          </span>
-          <span className="font-en text-sm font-bold tracking-[0.22em]">SAYVA</span>
+          <BrandLogo className="transition-opacity duration-200 group-hover:opacity-80" />
         </Link>
 
         <nav aria-label={t("primaryNavigation")} className="hidden items-center gap-7 lg:flex">
           {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-body-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
+            <NavLink key={item.href} href={item.href}>
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-1.5 lg:flex">
           <Link
             href="/"
             locale={otherLocale}
             aria-label={t("languageLabel")}
             lang={otherLocale}
             dir={localeDirection(otherLocale)}
-            className="inline-flex h-9 items-center gap-2 rounded-lg px-3 text-body-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="inline-flex h-9 items-center gap-2 rounded-lg px-3 text-body-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground"
           >
             <Globe2 aria-hidden className="size-4" />
             <span>{t("language")}</span>
@@ -103,8 +120,11 @@ export async function SiteHeader({ locale }: { locale: AppLocale }) {
               className="flex w-[min(22rem,calc(100vw-1.5rem))] flex-col"
             >
               <SheetHeader className="text-start">
-                <SheetTitle className="font-en tracking-[0.2em]">SAYVA</SheetTitle>
-                <SheetDescription>{t("primaryCta")}</SheetDescription>
+                <SheetTitle className="sr-only">{t("mobileNavigation")}</SheetTitle>
+                <BrandLogo className="text-foreground" />
+                <SheetDescription className="text-muted-foreground">
+                  {t("primaryCta")}
+                </SheetDescription>
               </SheetHeader>
               <nav aria-label={t("mobileNavigation")} className="mt-8 flex flex-col gap-1">
                 {items.map((item) => (

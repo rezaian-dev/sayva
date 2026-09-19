@@ -1,60 +1,55 @@
 "use client";
 
+import { Moon, Sun } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import { Monitor, Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 /**
- * Light / Dark / System switch.
- * The trigger shows both icons and lets CSS (the .dark class on <html>)
- * decide which one is visible, so there is no mounted-state flash and no
- * hydration mismatch.
+ * Two-state theme toggle: Light ↔ Dark. There is no menu, no dialog and no
+ * visible "System" option — the underlying next-themes provider still
+ * honors the OS preference internally, but the user-facing control is a
+ * single icon button.
+ *
+ * First-render correctness without flicker: the visible icon is decided by
+ * CSS (the `.dark` class on <html>), not by React state. Both icons are
+ * rendered stacked and crossfade when the class flips, so the SSR HTML and
+ * the first client paint always match — no `isMounted` gate, no hydration
+ * mismatch. The only client work is the click handler.
  */
 export function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations("theme");
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <Tooltip>
+      <TooltipTrigger asChild>
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon"
           aria-label={t("toggle")}
-          className="relative"
+          aria-pressed={resolvedTheme === "dark"}
+          onClick={() =>
+            setTheme(resolvedTheme === "dark" ? "light" : "dark")
+          }
         >
-          <Sun
-            aria-hidden
-            className="size-4 transition-all dark:scale-0 dark:opacity-0"
-          />
-          <Moon
-            aria-hidden
-            className="absolute size-4 scale-0 opacity-0 transition-all dark:scale-100 dark:opacity-100"
-          />
+          <span className="relative block size-4">
+            <Sun
+              aria-hidden
+              className="absolute inset-0 size-4 transition-all duration-300 ease-out dark:rotate-90 dark:scale-0 dark:opacity-0"
+            />
+            <Moon
+              aria-hidden
+              className="absolute inset-0 size-4 -rotate-90 scale-0 opacity-0 transition-all duration-300 ease-out dark:rotate-0 dark:scale-100 dark:opacity-100"
+            />
+          </span>
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          <Sun aria-hidden />
-          {t("light")}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Moon aria-hidden />
-          {t("dark")}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Monitor aria-hidden />
-          {t("system")}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </TooltipTrigger>
+      <TooltipContent side="bottom">
+        {t("toggle")}
+      </TooltipContent>
+    </Tooltip>
   );
 }

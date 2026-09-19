@@ -14,6 +14,13 @@
  * Fonts are provided by next/font/local as --font-vazirmatn (Persian/Arabic
  * subset) and --font-inter (Latin subset), both variable, both vendored in
  * src/fonts/. Direction decides which font leads the stack.
+ *
+ * Section surfaces:
+ *  - background (cream / deep slate-navy): the quiet canvas.
+ *  - deep (navy in light, near-black navy in dark): the immersive surface
+ *    used by hero, footer and editorial bands.
+ *  - button-primary: the CTA. Solid navy in light, ivory in dark so the
+ *    primary action always reads against the canvas.
  */
 
 :root {
@@ -51,6 +58,13 @@ html[dir="rtl"] {
   --color-warning-foreground: var(--warning-foreground);
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-deep-muted: var(--deep-muted);
+  --color-button-primary: var(--button-primary);
+  --color-button-primary-foreground: var(--button-primary-foreground);
+  --color-on-deep: var(--on-deep);
+  --color-on-deep-foreground: var(--on-deep-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -84,10 +98,13 @@ html[dir="rtl"] {
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  --shadow-soft: 0 1px 2px oklch(0.25 0.04 252 / 4%),
-    0 2px 8px -2px oklch(0.25 0.04 252 / 6%);
-  --shadow-raised: 0 2px 4px -1px oklch(0.25 0.04 252 / 6%),
-    0 10px 24px -8px oklch(0.25 0.04 252 / 12%);
+  --shadow-soft: 0 1px 2px oklch(0.25 0.04 252 / 5%),
+    0 2px 10px -2px oklch(0.25 0.04 252 / 7%);
+  --shadow-raised: 0 2px 6px -1px oklch(0.25 0.04 252 / 7%),
+    0 16px 36px -12px oklch(0.25 0.04 252 / 16%);
+  --shadow-lift: 0 1px 3px oklch(0.25 0.04 252 / 8%),
+    0 6px 18px -6px oklch(0.25 0.04 252 / 14%);
+  --shadow-deep: 0 24px 60px -24px oklch(0.12 0.03 252 / 45%);
 }
 
 :root {
@@ -103,6 +120,19 @@ html[dir="rtl"] {
 
   --primary: oklch(0.254 0.077 254.7); /* navy #032246 */
   --primary-foreground: oklch(0.977 0.007 80.7);
+
+  /* The immersive surface: navy, with its own foreground + muted tone. */
+  --deep: oklch(0.245 0.074 255.4);
+  --deep-foreground: oklch(0.963 0.009 82.4);
+  --deep-muted: oklch(0.807 0.022 80.1);
+
+  /* CTA: solid navy on the cream canvas. */
+  --button-primary: oklch(0.254 0.077 254.7);
+  --button-primary-foreground: oklch(0.977 0.007 80.7);
+
+  /* CTA placed on the deep surface: ivory on navy (both themes). */
+  --on-deep: oklch(0.968 0.008 82.1);
+  --on-deep-foreground: oklch(0.238 0.072 255);
 
   --secondary: oklch(0.936 0.011 76.6);
   --secondary-foreground: oklch(0.271 0.043 250.9);
@@ -144,21 +174,34 @@ html[dir="rtl"] {
 }
 
 .dark {
-  --background: oklch(0.178 0.021 249.1);
+  --background: oklch(0.172 0.022 250.2);
   --foreground: oklch(0.938 0.012 84.6);
 
-  --card: oklch(0.215 0.026 253.9);
+  --card: oklch(0.213 0.026 252.6);
   --card-foreground: oklch(0.938 0.012 84.6);
-  --popover: oklch(0.231 0.027 253.4);
+  --popover: oklch(0.229 0.027 252.4);
   --popover-foreground: oklch(0.938 0.012 84.6);
 
   --primary: oklch(0.702 0.127 251.6);
   --primary-foreground: oklch(0.188 0.029 251.6);
 
+  /* The immersive surface goes darker than the canvas so it still reads
+   * as "the deep room" instead of inverting to cream. */
+  --deep: oklch(0.148 0.026 250.9);
+  --deep-foreground: oklch(0.944 0.01 82.4);
+  --deep-muted: oklch(0.741 0.024 251.2);
+
+  /* CTA inverts: ivory on the dark canvas — the most premium dark CTA. */
+  --button-primary: oklch(0.955 0.009 82.4);
+  --button-primary-foreground: oklch(0.226 0.05 252.4);
+
+  --on-deep: oklch(0.955 0.009 82.4);
+  --on-deep-foreground: oklch(0.21 0.045 251);
+
   --secondary: oklch(0.264 0.025 251.2);
   --secondary-foreground: oklch(0.93 0.012 79.8);
 
-  --muted: oklch(0.248 0.025 251.2);
+  --muted: oklch(0.243 0.026 251.2);
   --muted-foreground: oklch(0.71 0.02 248.1);
 
   --accent: oklch(0.296 0.028 75.7);
@@ -171,10 +214,10 @@ html[dir="rtl"] {
   --warning: oklch(0.809 0.153 79.8);
   --warning-foreground: oklch(0.238 0.036 73.5);
 
-  --gold: oklch(0.691 0.094 72.1);
+  --gold: oklch(0.723 0.098 73.4);
   --gold-foreground: oklch(0.188 0.027 251.7);
 
-  --border: oklch(0.305 0.024 251.1);
+  --border: oklch(0.3 0.024 251.1);
   --input: oklch(0.335 0.03 250.6);
   --ring: oklch(0.735 0.105 76.2);
 
@@ -184,13 +227,13 @@ html[dir="rtl"] {
   --chart-4: oklch(0.541 0.068 249.9);
   --chart-5: oklch(0.936 0.011 76.6);
 
-  --sidebar: oklch(0.2 0.023 249);
+  --sidebar: oklch(0.196 0.023 249);
   --sidebar-foreground: oklch(0.938 0.012 84.6);
   --sidebar-primary: oklch(0.702 0.127 251.6);
   --sidebar-primary-foreground: oklch(0.188 0.029 251.6);
   --sidebar-accent: oklch(0.296 0.028 75.7);
   --sidebar-accent-foreground: oklch(0.867 0.067 79.4);
-  --sidebar-border: oklch(0.305 0.024 251.1);
+  --sidebar-border: oklch(0.3 0.024 251.1);
   --sidebar-ring: oklch(0.735 0.105 76.2);
 }
 
@@ -201,30 +244,33 @@ html[dir="rtl"] {
  * neutral so RTL script is never compressed.
  */
 @utility text-display {
-  font-size: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
-  line-height: 1.2;
+  font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.25rem);
+  line-height: 1.12;
   font-weight: 800;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
 @utility text-h1 {
-  font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.5rem);
-  line-height: 1.25;
-  font-weight: 700;
+  font-size: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
 @utility text-h2 {
-  font-size: clamp(1.375rem, 1.2rem + 0.9vw, 1.75rem);
+  font-size: clamp(1.375rem, 1.2rem + 0.9vw, 1.875rem);
   line-height: 1.3;
   font-weight: 700;
+  letter-spacing: -0.005em;
   text-wrap: balance;
 }
 
 @utility text-h3 {
   font-size: 1.125rem;
   line-height: 1.45;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 @utility text-body {
@@ -249,6 +295,18 @@ html[dir="rtl"] {
   font-weight: 600;
 }
 
+/* Small gold kicker line used above eyebrows and headings. */
+@utility eyebrow-rule {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--gold),
+    color-mix(in oklab, var(--gold) 30%, transparent)
+  );
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -264,5 +322,60 @@ html[dir="rtl"] {
 
   ::selection {
     background-color: color-mix(in oklab, var(--gold) 35%, transparent);
+  }
+}
+
+@layer utilities {
+  /*
+   * Khatam (eight-point star) lattice — the brand's quiet geometric
+   * signature. Two overlapping squares per tile, hairline stroke, kept at
+   * very low opacity so it reads as texture, never as pattern-noise.
+   */
+  .bg-khatam {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23032246' stroke-opacity='0.055' stroke-width='1'%3E%3Crect x='20' y='20' width='32' height='32'/%3E%3Crect x='20' y='20' width='32' height='32' transform='rotate(45 36 36)'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 72px 72px;
+  }
+
+  .dark .bg-khatam {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23FAF7F2' stroke-opacity='0.05' stroke-width='1'%3E%3Crect x='20' y='20' width='32' height='32'/%3E%3Crect x='20' y='20' width='32' height='32' transform='rotate(45 36 36)'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Slightly stronger lattice for the deep (navy) surfaces. */
+  .bg-khatam-deep {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23FAF7F2' stroke-opacity='0.055' stroke-width='1'%3E%3Crect x='20' y='20' width='32' height='32'/%3E%3Crect x='20' y='20' width='32' height='32' transform='rotate(45 36 36)'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 72px 72px;
+  }
+
+  .dark .bg-khatam-deep {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23FAF7F2' stroke-opacity='0.045' stroke-width='1'%3E%3Crect x='20' y='20' width='32' height='32'/%3E%3Crect x='20' y='20' width='32' height='32' transform='rotate(45 36 36)'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Warm radial light, top-biased — the "evening lamp" atmosphere. */
+  .bg-hero-glow {
+    background:
+      radial-gradient(
+        55% 45% at 78% 0%,
+        color-mix(in oklab, var(--gold) 22%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        45% 40% at 12% 100%,
+        color-mix(in oklab, var(--gold) 10%, transparent),
+        transparent 70%
+      );
+  }
+
+  /* Arch (iwan) silhouette for feature imagery — the brand's second mark. */
+  .arch-crop {
+    border-radius: 999px 999px 1.25rem 1.25rem;
+  }
+
+  /* Gold progress fill used by every progress bar in the product. */
+  .progress-fill {
+    background: linear-gradient(
+      to right,
+      color-mix(in oklab, var(--gold) 78%, oklch(0.78 0.11 74)),
+      var(--gold)
+    );
   }
 }
