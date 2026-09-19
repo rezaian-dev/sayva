@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
 
+import { ensureModelReady } from "@/lib/db/model-ready";
 import { LearnerDomainProgress } from "@/models/domain/progress";
 import type { DomainProgressName, DomainProgressState, LearnerDomainProgressRecord } from "@/models/domain/types";
 import { PracticeSet } from "@/models/practice/set";
@@ -64,6 +65,10 @@ export async function saveProgress({
   };
 
   try {
+    // Deterministic unique-index build before the first write so
+    // concurrent progress writes converge via the duplicate-key retry.
+    await ensureModelReady(LearnerDomainProgress, "LearnerDomainProgress");
+
     return await LearnerDomainProgress.findOneAndUpdate(
       { userId, domain, contentId },
       update,

@@ -6,6 +6,7 @@ import { Types } from "mongoose";
 
 import { getServerSession } from "@/lib/auth/session";
 import { findOnboardingProfile } from "@/lib/db/onboarding";
+import { ensureModelReady } from "@/lib/db/model-ready";
 import { getPracticeSetForStart } from "@/lib/db/practice";
 import { evaluatePracticeResponse } from "@/lib/practice/evaluate";
 import { buildAttemptAppendUpdate } from "@/lib/practice/submit-update";
@@ -76,6 +77,10 @@ export async function startPracticeSession(
     const practice = await getPracticeSetForStart(parsed.data.practiceSetId);
     if (!practice) return { ok: false, code: "NOT_FOUND" };
     if (!practice.exerciseIds.length) return { ok: false, code: "EMPTY" };
+
+    // Deterministic unique-index build before the first write: concurrent
+    // starts on a fresh database must converge via the 11000 path below.
+    await ensureModelReady(PracticeSession, "PracticeSession");
 
     const existing = await PracticeSession.findOne({
       userId: user.userId,

@@ -6,6 +6,7 @@ import { Types } from "mongoose";
 import { getServerSession } from "@/lib/auth/session";
 import { findOnboardingProfile } from "@/lib/db/onboarding";
 import { findPublishedLessonForCompletion } from "@/lib/db/learning";
+import { ensureModelReady } from "@/lib/db/model-ready";
 import { LessonProgress } from "@/models/learning/progress";
 import { lessonIdSchema } from "@/validation/learning/lesson";
 
@@ -75,6 +76,10 @@ export async function completeLesson(
   const now = new Date();
 
   try {
+    // Deterministic unique-index build before the first write: concurrent
+    // completions from two tabs converge via the duplicate-key retry below.
+    await ensureModelReady(LessonProgress, "LessonProgress");
+
     await LessonProgress.findOneAndUpdate(
       { userId, lessonId },
       {

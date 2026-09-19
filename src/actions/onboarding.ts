@@ -2,6 +2,7 @@
 
 import { getServerSession } from "@/lib/auth/session";
 import { connectToDatabase } from "@/lib/db/mongodb";
+import { ensureModelReady } from "@/lib/db/model-ready";
 import { OnboardingProfile } from "@/models/onboarding-profile";
 import { onboardingSchema } from "@/validation/onboarding";
 
@@ -58,6 +59,10 @@ export async function saveOnboarding(
 
       return { ok: false, code: "VALIDATION", fieldErrors };
     }
+
+    // Deterministic unique-index build before the first write so
+    // concurrent saves converge instead of duplicating the profile.
+    await ensureModelReady(OnboardingProfile, "OnboardingProfile");
 
     const savedProfile = await OnboardingProfile.findOneAndUpdate(
       { userId },
