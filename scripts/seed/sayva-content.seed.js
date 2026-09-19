@@ -3658,7 +3658,7 @@ function resolveEnv() {
     return { ok: false, uri: raw, host, dbName, reason: `database must be ${EXPECTED_DB_NAME}; got ${dbName || "(none)"}` };
   }
   void parsed;
-  return { ok: true, uri: raw, host, dbName };
+  return { ok: true, uri: raw, host, port: actual.port || "27017", dbName };
 }
 
 /* --------------------------------- write --------------------------------- */
@@ -3906,7 +3906,7 @@ async function main() {
     return;
   }
   console.log("");
-  console.log(`MongoDB target: mongodb://${env.host}:27017/${env.dbName} — verified, proceeding.`);
+  console.log(`MongoDB target: mongodb://${env.host}:${env.port}/${env.dbName} — verified, proceeding.`);
   await seedDatabase(ds);
 }
 

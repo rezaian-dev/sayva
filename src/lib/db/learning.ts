@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 
 import { connectToDatabase } from "@/lib/db/mongodb";
+import { normalizeLearnerLevelSlug } from "@/lib/learning/level-map";
 import { LearningCourse } from "@/models/learning/course";
 import { LearningLesson } from "@/models/learning/lesson";
 import { LearningLevel } from "@/models/learning/level";
@@ -160,9 +161,14 @@ export async function getLearningHomeData(
     .sort({ order: 1 })
     .lean<LevelRecord[]>()
     .exec();
-  const currentLevelRecord = learnerLevel
-    ? levels.find((level) => level.slug === learnerLevel) ?? null
-    : levels[0] ?? null;
+  // Onboarding stores self-assessed labels ("beginner", "intermediate",
+  // ...) — not CEFR slugs. Normalize first, then fall back to the first
+  // published level so the home page never renders empty while content
+  // exists.
+  const wantedSlug = normalizeLearnerLevelSlug(learnerLevel);
+  const currentLevelRecord = wantedSlug
+    ? (levels.find((level) => level.slug === wantedSlug) ?? levels[0] ?? null)
+    : (levels[0] ?? null);
 
   if (!currentLevelRecord) {
     return {

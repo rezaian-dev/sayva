@@ -51,12 +51,23 @@ export async function SiteHeader({ locale }: { locale: AppLocale }) {
   const t = await getTranslations("nav");
   const otherLocale = routing.locales.find((item) => item !== locale) ?? locale;
   const session = await getServerSession();
-  const items = [
+  const isAdmin = !!session && session.user.role === "admin";
+  const publicItems = [
     { href: "/features", label: t("features") },
     { href: "/experience", label: t("experience") },
     { href: "/about", label: t("about") },
     { href: "/faq", label: t("faq") },
-  ] as const;
+  ];
+  const appItems = [
+    { href: "/learn", label: t("learn") },
+    { href: "/practice", label: t("practice") },
+    { href: "/progress", label: t("progress") },
+    { href: "/speaking", label: t("speaking") },
+    ...(isAdmin ? [{ href: "/admin", label: t("admin") }] : []),
+  ];
+  // Signed-in learners see app navigation; guests see marketing pages.
+  // Rendering both sets at once overcrowded the header.
+  const items = session ? appItems : publicItems;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
@@ -91,7 +102,7 @@ export async function SiteHeader({ locale }: { locale: AppLocale }) {
           </Link>
           <ThemeToggle />
           {session ? (
-            <AuthenticatedNav name={session.user.name} isAdmin={session.user.role === "admin"} />
+            <AuthenticatedNav name={session.user.name} />
           ) : (
             <>
               <Button variant="ghost" size="sm" asChild>
@@ -152,14 +163,7 @@ export async function SiteHeader({ locale }: { locale: AppLocale }) {
                   </Link>
                 </SheetClose>
                 {session ? (
-                  <>
-                    <SheetClose asChild>
-                      <Link href="/learn" className="flex min-h-11 items-center rounded-lg px-3 text-body-sm font-medium hover:bg-muted">
-                        {t("learn")}
-                      </Link>
-                    </SheetClose>
-                    <AuthenticatedNav name={session.user.name} isAdmin={session.user.role === "admin"} />
-                  </>
+                  <AuthenticatedNav name={session.user.name} />
                 ) : (
                   <>
                     <SheetClose asChild>
