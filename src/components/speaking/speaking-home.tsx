@@ -17,7 +17,7 @@ export async function SpeakingHome({ scenarios, locale }: { scenarios: SpeakingS
         <div className="mx-auto w-full max-w-5xl">
           <SpeakingNavigation />
           <header className="mt-8 max-w-3xl">
-            <p className="text-label text-gold">{t("home.eyebrow")}</p>
+            <p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold"><span aria-hidden className="eyebrow-rule" />{t("home.eyebrow")}</p>
             <h1 className="text-h1 mt-3">{t("home.title")}</h1>
             <p className="text-body mt-4 text-muted-foreground">{t("home.description")}</p>
           </header>

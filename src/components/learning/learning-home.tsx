@@ -26,22 +26,27 @@ export async function LearningHome({
     : 0;
 
   return (
-    <main className="flex flex-1 bg-muted/30 py-10 md:py-16">
+    <main className="flex flex-1 bg-background py-10 md:py-14">
       <Container>
         <div className="mx-auto w-full max-w-6xl">
-          <div className="mb-8 max-w-3xl">
-            <p className="text-label text-gold">{t("home.eyebrow")}</p>
-            <h1 className="text-h1 mt-3">{t("home.title")}</h1>
+          <div className="mb-9 max-w-3xl">
+            <p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold">
+              <span aria-hidden className="eyebrow-rule" />
+              {t("home.eyebrow")}
+            </p>
+            <h1 className="text-h1 mt-4">{t("home.title")}</h1>
             <p className="text-body mt-4 text-muted-foreground">
               {t("home.description")}
             </p>
           </div>
 
           <div className="grid gap-5 md:grid-cols-3">
-            <Card>
+            <Card className="border-border/80">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Compass aria-hidden className="size-5 text-gold" />
+                <CardTitle className="flex items-center gap-2.5">
+                  <span className="flex size-8 items-center justify-center rounded-full border border-gold/40 bg-accent">
+                    <Compass aria-hidden className="size-4 text-gold" />
+                  </span>
                   {t("home.currentLevel")}
                 </CardTitle>
               </CardHeader>
@@ -59,15 +64,17 @@ export async function LearningHome({
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border-border/80">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle2 aria-hidden className="size-5 text-success" />
+                <CardTitle className="flex items-center gap-2.5">
+                  <span className="flex size-8 items-center justify-center rounded-full border border-success/40 bg-success/10">
+                    <CheckCircle2 aria-hidden className="size-4 text-success" />
+                  </span>
                   {t("home.progress")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-h2">{progressPercent}%</p>
+                <p className="text-h2 tabular-nums">{progressPercent}%</p>
                 <p className="text-body-sm mt-2 text-muted-foreground">
                   {t("progress.lessons", {
                     completed: data.completedLessons,
@@ -82,12 +89,15 @@ export async function LearningHome({
                   aria-valuemax={100}
                   aria-valuenow={progressPercent}
                 >
-                  <div className="h-full rounded-full bg-gold transition-[width]" style={{ width: `${progressPercent}%` }} />
+                  <div
+                    className="progress-fill h-full rounded-full transition-[width] duration-500"
+                    style={{ width: `${progressPercent}%` }}
+                  />
                 </div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border-border/80 bg-card/60">
               <CardHeader>
                 <CardTitle>{t("home.nextStep")}</CardTitle>
               </CardHeader>
@@ -122,30 +132,31 @@ export async function LearningHome({
             </Card>
           </div>
 
-          <section className="mt-12" aria-labelledby="available-levels">
-            <div className="mb-5 flex items-end justify-between gap-4">
-              <div>
-                <p className="text-label text-gold">{t("home.curriculumEyebrow")}</p>
-                <h2 id="available-levels" className="text-h2 mt-2">
-                  {t("home.curriculumTitle")}
-                </h2>
-              </div>
+          <section className="mt-14" aria-labelledby="available-levels">
+            <div className="mb-6">
+              <p className="text-label text-gold">{t("home.curriculumEyebrow")}</p>
+              <h2 id="available-levels" className="text-h2 mt-2">
+                {t("home.curriculumTitle")}
+              </h2>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {data.levels.map((level) => (
                 <Link
                   key={level.id}
                   href={learningLevelPath(level.slug)}
-                  className="group rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                  className="group relative rounded-xl border border-border/80 bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-soft"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <Badge variant="outline">{level.code}</Badge>
-                      <h3 className="text-h3 mt-3 group-hover:text-primary">
+                      <h3 className="text-h3 mt-3 transition-colors group-hover:text-gold">
                         {localize(level.title, locale)}
                       </h3>
                     </div>
-                    <Arrow aria-hidden className="size-4 text-muted-foreground" />
+                    <Arrow
+                      aria-hidden
+                      className="size-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:group-hover:-translate-x-0.5"
+                    />
                   </div>
                   <p className="text-body-sm mt-2 text-muted-foreground">
                     {localize(level.description, locale)}
@@ -155,8 +166,8 @@ export async function LearningHome({
             </div>
           </section>
 
-          <section className="mt-12" aria-labelledby="current-curriculum">
-            <div className="mb-5">
+          <section className="mt-14" aria-labelledby="current-curriculum">
+            <div className="mb-6">
               <p className="text-label text-gold">{t("home.currentEyebrow")}</p>
               <h2 id="current-curriculum" className="text-h2 mt-2">
                 {t("home.currentTitle")}

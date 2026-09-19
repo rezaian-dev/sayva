@@ -4,9 +4,10 @@ import { Compass, HeartHandshake, Ruler } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { CtaLink } from "@/components/public/cta-link";
+import { Reveal } from "@/components/motion/reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { SectionIntro } from "@/components/public/section-intro";
 import { Container } from "@/components/container";
-import { Card, CardContent } from "@/components/ui/card";
 import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -30,6 +31,10 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * ABOUT — the story of the product. An image-led opening, a quiet
+ * editorial statement, and the values as a hairline list.
+ */
 export default async function AboutPage({
   params,
 }: {
@@ -45,59 +50,93 @@ export default async function AboutPage({
 
   return (
     <main>
-      <section className="bg-card">
-        <Container className="grid gap-12 py-20 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:py-32">
-          <div className="max-w-2xl">
-            <p className="text-caption font-semibold uppercase tracking-[0.16em] text-gold">{t("eyebrow")}</p>
-            <h1 className="text-display mt-5">{t("title")}</h1>
-            <p className="text-body mt-6 text-muted-foreground">{t("description")}</p>
-          </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border shadow-raised">
-            <Image
-              src="/images/sayva-study-studio.jpg"
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+      {/* ── Opening ──────────────────────────────────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-background">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-khatam" />
+        <Container className="relative grid gap-12 py-16 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:gap-20 lg:py-24">
+          <StaggerGroup className="max-w-2xl" stagger={0.09}>
+            <StaggerItem>
+              <p className="text-caption mb-5 flex items-center gap-3 font-semibold uppercase tracking-[0.18em] text-gold">
+                <span aria-hidden className="eyebrow-rule" />
+                {t("eyebrow")}
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <h1 className="text-display">{t("title")}</h1>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="text-body mt-6 text-muted-foreground">{t("description")}</p>
+            </StaggerItem>
+          </StaggerGroup>
+          <Reveal delay={0.12} className="relative mx-auto w-full max-w-md lg:max-w-none">
+            <div
+              aria-hidden
+              className="absolute -end-4 -top-4 hidden h-full w-full rounded-[1.75rem] border border-gold/40 sm:block"
             />
-            <div aria-hidden className="absolute inset-0 bg-primary/15 mix-blend-multiply" />
-            <div className="absolute bottom-4 start-4 size-16 rounded-full border border-white/60 sm:bottom-6 sm:start-6 sm:size-20" />
-          </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-border/70 shadow-raised">
+              <Image
+                src="/images/auth/quiet-room.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover object-center"
+              />
+            </div>
+          </Reveal>
         </Container>
       </section>
 
+      {/* ── Story ────────────────────────────────────────────────────── */}
+      <section className="border-y border-border/70 bg-card">
+        <Container className="grid gap-10 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:py-24">
+          <Reveal>
+            <SectionIntro eyebrow="SAYVA" title={t("storyTitle")} />
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="border-s-2 border-gold/70 ps-6 text-body max-w-2xl text-muted-foreground">
+              {t("storyBody")}
+            </p>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ── Values ───────────────────────────────────────────────────── */}
       <section className="bg-background">
-        <Container className="grid gap-10 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:py-28">
-          <SectionIntro eyebrow="SAYVA" title={t("storyTitle")} />
-          <p className="text-body max-w-2xl text-muted-foreground">{t("storyBody")}</p>
-        </Container>
-      </section>
-
-      <section className="bg-muted/50">
-        <Container className="py-20 lg:py-28">
-          <SectionIntro eyebrow={t("valuesEyebrow")} title={t("identityTitle")} description={t("identityBody")} />
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <Container className="py-16 lg:py-24">
+          <Reveal className="max-w-2xl">
+            <SectionIntro
+              eyebrow={t("valuesEyebrow")}
+              title={t("identityTitle")}
+              description={t("identityBody")}
+            />
+          </Reveal>
+          <StaggerGroup className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-3" stagger={0.12}>
             {values.map(({ key, icon: Icon }) => (
-              <Card key={key} className="border-border/80 bg-card">
-                <CardContent className="p-7">
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
-                    <Icon aria-hidden className="size-5" />
-                  </span>
-                  <h2 className="text-h3 mt-10">{t(`values.${key}.title`)}</h2>
-                  <p className="text-body-sm mt-3 text-muted-foreground">{t(`values.${key}.body`)}</p>
-                </CardContent>
-              </Card>
+              <StaggerItem key={key} className="border-t-2 border-gold/70 pt-5">
+                <span className="flex size-11 items-center justify-center rounded-full border border-gold/40 bg-accent text-accent-foreground">
+                  <Icon aria-hidden className="size-5" strokeWidth={1.75} />
+                </span>
+                <h2 className="text-h3 mt-5">{t(`values.${key}.title`)}</h2>
+                <p className="text-body-sm mt-2.5 text-muted-foreground">{t(`values.${key}.body`)}</p>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
-      <section className="bg-primary text-primary-foreground">
-        <Container className="py-20 text-center sm:py-24 lg:py-28">
-          <h2 className="text-h1 mx-auto max-w-2xl">{t("closingTitle")}</h2>
-          <CtaLink href="/experience" locale={locale} variant="secondary" className="mt-8">
-            {t("closingCta")}
-          </CtaLink>
+      {/* ── Closing ──────────────────────────────────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-deep text-deep-foreground">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-khatam-deep" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-hero-glow" />
+        <Container className="relative py-20 text-center sm:py-24 lg:py-28">
+          <Reveal className="mx-auto flex max-w-2xl flex-col items-center">
+            <h2 className="text-h1 text-deep-foreground">{t("closingTitle")}</h2>
+            <div className="mt-9">
+              <CtaLink href="/experience" locale={locale} variant="onDeep">
+                {t("closingCta")}
+              </CtaLink>
+            </div>
+          </Reveal>
         </Container>
       </section>
     </main>
