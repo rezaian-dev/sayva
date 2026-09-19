@@ -88,7 +88,7 @@ export async function completeLesson(
       },
       {
         upsert: true,
-        new: true,
+        returnDocument: "after",
         runValidators: true,
       },
     ).exec();

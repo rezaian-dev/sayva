@@ -40,6 +40,54 @@ export async function LearningHome({
             </p>
           </div>
 
+          {data.completedLessons === 0 && data.currentLesson ? (
+            <section
+              aria-labelledby="start-here"
+              className="relative mb-9 overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-b from-accent/70 via-card to-card p-6 shadow-soft md:p-8"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent"
+              />
+              <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-xl">
+                  <p className="text-label flex items-center gap-3 font-semibold uppercase tracking-[0.14em] text-gold">
+                    <span aria-hidden className="eyebrow-rule" />
+                    {t("guide.eyebrow")}
+                  </p>
+                  <h2 id="start-here" className="text-h2 mt-3">
+                    {t("guide.title")}
+                  </h2>
+                  <p className="text-body mt-3 text-muted-foreground">{t("guide.body")}</p>
+                  <ol className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+                    {[t("guide.step1"), t("guide.step2"), t("guide.step3")].map((step, index) => (
+                      <li key={step} className="text-body-sm flex items-center gap-2 font-medium">
+                        <span className="text-label flex size-6 items-center justify-center rounded-full border border-gold/40 bg-background font-bold text-gold">
+                          {(index + 1).toLocaleString(locale === "fa" ? "fa-IR" : "en-US")}
+                        </span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+                <Button asChild size="lg" className="shrink-0">
+                  <Link
+                    href={learningLessonPath(
+                      data.currentLesson.levelSlug,
+                      data.currentLesson.courseSlug,
+                      data.currentLesson.unitSlug,
+                      data.currentLesson.slug,
+                    )}
+                  >
+                    <Play aria-hidden />
+                    {t("guide.cta")}
+                    <Arrow aria-hidden />
+                  </Link>
+                </Button>
+              </div>
+            </section>
+          ) : null}
+
           <div className="grid gap-5 md:grid-cols-3">
             <Card className="border-border/80">
               <CardHeader>
@@ -123,10 +171,21 @@ export async function LearningHome({
                       </Link>
                     </Button>
                   </>
+                ) : data.totalLessons ? (
+                  <>
+                    <p className="text-body-sm text-muted-foreground">{t("home.allComplete")}</p>
+                    <p className="text-body-sm mt-3 text-muted-foreground">
+                      {t("home.practiceBody")}
+                    </p>
+                    <Button asChild variant="secondary" className="mt-5 w-full">
+                      <Link href="/practice">
+                        {t("home.practiceCta")}
+                        <Arrow aria-hidden />
+                      </Link>
+                    </Button>
+                  </>
                 ) : (
-                  <p className="text-body-sm text-muted-foreground">
-                    {data.totalLessons ? t("home.allComplete") : t("empty.curriculum")}
-                  </p>
+                  <p className="text-body-sm text-muted-foreground">{t("empty.curriculum")}</p>
                 )}
               </CardContent>
             </Card>

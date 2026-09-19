@@ -402,7 +402,9 @@
       "currentEyebrow": "Your current path",
       "currentTitle": "Continue with the next available lesson.",
       "breadcrumb": "Learning home",
-      "allComplete": "You have completed every published lesson in this level."
+      "allComplete": "You have completed every published lesson in this level.",
+      "practiceBody": "Lock in the skill with practice.",
+      "practiceCta": "Go to practice"
     },
     "level": {
       "eyebrow": "Published curriculum",
@@ -463,6 +465,15 @@
     },
     "breadcrumbs": {
       "label": "Learning breadcrumb"
+    },
+    "guide": {
+      "eyebrow": "Your roadmap",
+      "title": "Start here",
+      "body": "Open your first lesson, solve its practice, and watch your progress. Every step starts right here.",
+      "step1": "Study the lesson",
+      "step2": "Solve the practice",
+      "step3": "See your progress",
+      "cta": "Start the first lesson"
     }
   },
   "practice": {

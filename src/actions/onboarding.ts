@@ -70,7 +70,7 @@ export async function saveOnboarding(
         },
       },
       {
-        new: true,
+        returnDocument: "after",
         upsert: true,
         runValidators: true,
         setDefaultsOnInsert: true,

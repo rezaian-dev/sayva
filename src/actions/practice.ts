@@ -8,6 +8,7 @@ import { getServerSession } from "@/lib/auth/session";
 import { findOnboardingProfile } from "@/lib/db/onboarding";
 import { getPracticeSetForStart } from "@/lib/db/practice";
 import { evaluatePracticeResponse } from "@/lib/practice/evaluate";
+import { buildAttemptAppendUpdate } from "@/lib/practice/submit-update";
 import { isPracticeComplete } from "@/lib/practice/score";
 import { PracticeExercise } from "@/models/practice/exercise";
 import { PracticeSession } from "@/models/practice/session";
@@ -199,21 +200,19 @@ export async function submitPracticeAnswer(
       submittedAt,
     };
     const totalCount = session.exerciseOrder.length;
-    const answerCount = { $size: "$attempts" };
-    const correctCount = {
-      $size: {
-        $filter: {
-          input: "$attempts",
-          as: "attempt",
-          cond: "$$attempt.isCorrect",
-        },
-      },
-    };
-    const completed = { $gte: [answerCount, totalCount] };
+    const { update } = buildAttemptAppendUpdate({
+      previousAttempts: session.attempts,
+      attempt,
+      totalCount,
+      submittedAt,
+    });
 
     // One conditional document update appends the attempt and derives the
-    // lifecycle/result from the post-append array. This avoids a two-write
-    // race without requiring a MongoDB replica-set transaction.
+    // lifecycle/result from the post-append counts. Plain $push/$set on
+    // purpose: Mongoose rejects aggregation-pipeline (array) updates. The
+    // `attempts.exerciseId: $ne` guard makes a concurrent duplicate submit
+    // match nothing, so the loser falls into the re-read branch below
+    // without requiring a MongoDB replica-set transaction.
     const updated = await PracticeSession.findOneAndUpdate(
       {
         _id: sessionId,
@@ -221,38 +220,8 @@ export async function submitPracticeAnswer(
         status: "active",
         "attempts.exerciseId": { $ne: exerciseId },
       },
-      [
-        {
-          $set: {
-            attempts: { $concatArrays: ["$attempts", [attempt]] },
-          },
-        },
-        {
-          $set: {
-            currentIndex: answerCount,
-            status: { $cond: [completed, "completed", "active"] },
-            completedAt: { $cond: [completed, submittedAt, "$completedAt"] },
-            result: {
-              $cond: [
-                completed,
-                {
-                  correctCount,
-                  totalCount,
-                  scorePercent: {
-                    $round: [
-                      { $multiply: [{ $divide: [correctCount, totalCount] }, 100] },
-                      0,
-                    ],
-                  },
-                  completedAt: submittedAt,
-                },
-                "$result",
-              ],
-            },
-          },
-        },
-      ],
-      { new: true },
+      update,
+      { returnDocument: "after" },
     )
       .lean<PracticeSessionRecord>()
       .exec();

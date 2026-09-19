@@ -77,7 +77,7 @@ export async function markSpeakingAttemptRecorded(userId: string, scenarioId: st
   return SpeakingAttempt.findOneAndUpdate(
     { _id: attemptId, userId, scenarioId: new Types.ObjectId(scenarioId), status: "started" },
     { $set: { status: "recorded", recordedAt: new Date() } },
-    { new: true, runValidators: true },
+    { returnDocument: "after", runValidators: true },
   ).lean<SpeakingAttemptRecord>().exec();
 }
 
@@ -86,7 +86,7 @@ export async function markSpeakingAttemptProcessing(userId: string, scenarioId: 
   return SpeakingAttempt.findOneAndUpdate(
     { _id: attemptId, userId, scenarioId: new Types.ObjectId(scenarioId), status: "recorded" },
     { $set: { status: "processing", processingStartedAt: new Date() } },
-    { new: true, runValidators: true },
+    { returnDocument: "after", runValidators: true },
   ).lean<SpeakingAttemptRecord>().exec();
 }
 
@@ -109,7 +109,7 @@ export async function completeSpeakingAttempt(
       },
       $unset: { failureCode: 1, failedAt: 1 },
     },
-    { new: true, runValidators: true },
+    { returnDocument: "after", runValidators: true },
   ).lean<SpeakingAttemptRecord>().exec();
 }
 
@@ -131,7 +131,7 @@ export async function recordSpeakingTranscriptFailure(
         failedAt: new Date(),
       },
     },
-    { new: true, runValidators: true },
+    { returnDocument: "after", runValidators: true },
   ).lean<SpeakingAttemptRecord>().exec();
 }
 
@@ -150,7 +150,7 @@ export async function failSpeakingAttempt(
       status: { $in: ["started", "recorded", "processing"] },
     },
     { $set: { status: "failed", failureCode, failedAt: new Date() } },
-    { new: true, runValidators: true },
+    { returnDocument: "after", runValidators: true },
   ).lean<SpeakingAttemptRecord>().exec();
 }
 

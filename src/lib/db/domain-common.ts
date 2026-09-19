@@ -67,14 +67,14 @@ export async function saveProgress({
     return await LearnerDomainProgress.findOneAndUpdate(
       { userId, domain, contentId },
       update,
-      { upsert: true, new: true, runValidators: true },
+      { upsert: true, returnDocument: "after", runValidators: true },
     ).exec();
   } catch (error) {
     if (!isDuplicateKeyError(error)) throw error;
     return LearnerDomainProgress.findOneAndUpdate(
       { userId, domain, contentId },
       update,
-      { new: true, runValidators: true },
+      { returnDocument: "after", runValidators: true },
     ).exec();
   }
 }

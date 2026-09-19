@@ -53,7 +53,6 @@ const practiceSessionSchema = new Schema<PracticeSessionRecord>(
   },
 );
 
-practiceSessionSchema.index({ userId: 1, practiceSetId: 1, status: 1 });
 // Phase 8 progress reads aggregate completed sessions and read recent sessions per learner.
 practiceSessionSchema.index({ userId: 1, status: 1, completedAt: -1 });
 practiceSessionSchema.index(

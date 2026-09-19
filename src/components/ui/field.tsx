@@ -1,6 +1,3 @@
-"use client"
-
-import { useMemo } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 
@@ -181,7 +178,9 @@ function FieldError({
 }: React.ComponentProps<"div"> & {
   errors?: Array<{ message?: string } | undefined>
 }) {
-  const content = useMemo(() => {
+  // Plain inline computation (no hooks) so this module stays a Server
+  // Component even though client form islands import it too.
+  const content = (() => {
     if (children) {
       return children
     }
@@ -206,7 +205,7 @@ function FieldError({
         )}
       </ul>
     )
-  }, [children, errors])
+  })()
 
   if (!content) {
     return null

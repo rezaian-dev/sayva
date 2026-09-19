@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test:practice": "node --test tests/practice/evaluate.test.mjs",
+    "test:practice": "node --test tests/practice/",
     "test:domains": "node --test tests/domains/rules.test.mjs",
     "test:speaking": "node --test tests/speaking/rules.test.mjs",
     "test:progress": "node --test tests/progress/rules.test.mjs"
